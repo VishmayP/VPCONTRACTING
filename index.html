@@ -3,1641 +3,392 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VP Contracting | Handyman & Maintenance Services | Thunder Bay, ON</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<title>VP Contracting | Thunder Bay's Trusted Handyman & Maintenance Experts</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --black: #0a0a0a;
-    --charcoal: #1a1a1a;
-    --steel: #2c2c2c;
-    --iron: #3d3d3d;
-    --silver: #8a8a8a;
-    --ash: #c4c4c4;
-    --white: #f5f2ee;
-    --gold: #d4a843;
-    --gold-dark: #b8891c;
-    --gold-light: #e8c870;
-    --red: #c0392b;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Barlow', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-    cursor: none;
-  }
-
-  /* Custom cursor */
-  .cursor {
-    width: 12px; height: 12px;
-    background: var(--gold);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-    mix-blend-mode: difference;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1.5px solid var(--gold);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 99998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
-    opacity: 0.6;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 1000;
-    padding: 20px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
-    backdrop-filter: blur(4px);
-    transition: background 0.3s ease;
-  }
-  nav.scrolled {
-    background: rgba(10,10,10,0.97);
-    border-bottom: 1px solid rgba(212,168,67,0.15);
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    text-decoration: none;
-  }
-  .logo-badge {
-    width: 48px; height: 48px;
-    background: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  }
-  .logo-badge span {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    color: var(--black);
-    line-height: 1;
-    letter-spacing: 1px;
-  }
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-  }
-  .logo-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 3px;
-    color: var(--white);
-    line-height: 1;
-  }
-  .logo-tagline {
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  .nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-    align-items: center;
-  }
-  .nav-links a {
-    text-decoration: none;
-    color: var(--ash);
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: color 0.2s ease;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width 0.3s ease;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-cta {
-    background: var(--gold);
-    color: var(--black) !important;
-    padding: 10px 24px;
-    font-weight: 700 !important;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-    transition: background 0.2s ease !important;
-  }
-  .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
-  .nav-cta::after { display: none !important; }
-  .nav-burger { display: none; cursor: none; background: none; border: none; }
-
-  /* HERO */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: 
-      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(212,168,67,0.07) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(192,57,43,0.05) 0%, transparent 50%),
-      linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0d0d0d 100%);
-  }
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(212,168,67,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(212,168,67,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 80% at 60% 40%, black 20%, transparent 70%);
-  }
-  .hero-noise {
-    position: absolute;
-    inset: 0;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-  }
-
-  /* Big diagonal accent */
-  .hero-slash {
-    position: absolute;
-    right: -100px;
-    top: -100px;
-    width: 700px;
-    height: 700px;
-    border: 1px solid rgba(212,168,67,0.12);
-    transform: rotate(25deg);
-    border-radius: 40px;
-  }
-  .hero-slash-2 {
-    position: absolute;
-    right: -50px;
-    top: -150px;
-    width: 600px;
-    height: 600px;
-    border: 1px solid rgba(212,168,67,0.06);
-    transform: rotate(20deg);
-    border-radius: 40px;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    padding: 0 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    padding-top: 100px;
-  }
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-    animation: fadeUp 0.8s ease 0.2s both;
-  }
-  .hero-eyebrow-line {
-    width: 40px; height: 1px;
-    background: var(--gold);
-  }
-  .hero-eyebrow span {
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-  }
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 11vw, 160px);
-    line-height: 0.9;
-    letter-spacing: 2px;
-    animation: fadeUp 0.8s ease 0.35s both;
-    position: relative;
-  }
-  .hero-title .line-gold { color: var(--gold); }
-  .hero-title .line-stroke {
-    -webkit-text-stroke: 1px rgba(245,242,238,0.3);
-    color: transparent;
-  }
-  .hero-subtitle {
-    font-size: 18px;
-    font-weight: 300;
-    color: var(--ash);
-    max-width: 520px;
-    line-height: 1.7;
-    margin-top: 28px;
-    animation: fadeUp 0.8s ease 0.5s both;
-  }
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin-top: 48px;
-    animation: fadeUp 0.8s ease 0.65s both;
-  }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--black);
-    padding: 16px 40px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 3px;
-    text-decoration: none;
-    display: inline-block;
-    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-    transition: background 0.2s ease, transform 0.2s ease;
-    cursor: none;
-  }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-  .btn-secondary {
-    color: var(--white);
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: color 0.2s ease;
-    cursor: none;
-  }
-  .btn-secondary:hover { color: var(--gold); }
-  .btn-secondary svg { transition: transform 0.2s ease; }
-  .btn-secondary:hover svg { transform: translateX(4px); }
-
-  .hero-stats {
-    display: flex;
-    gap: 60px;
-    margin-top: 80px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    animation: fadeUp 0.8s ease 0.8s both;
-  }
-  .stat-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    color: var(--gold);
-    line-height: 1;
-    letter-spacing: 2px;
-  }
-  .stat-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--silver);
-    font-weight: 500;
-    margin-top: 4px;
-  }
-
-  /* MARQUEE */
-  .marquee-section {
-    padding: 24px 0;
-    background: var(--gold);
-    overflow: hidden;
-    position: relative;
-  }
-  .marquee-track {
-    display: flex;
-    gap: 48px;
-    animation: marquee 25s linear infinite;
-    white-space: nowrap;
-    width: max-content;
-  }
-  .marquee-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px;
-    letter-spacing: 3px;
-    color: var(--black);
-  }
-  .marquee-dot {
-    width: 5px; height: 5px;
-    background: var(--black);
-    border-radius: 50%;
-    opacity: 0.4;
-  }
-
-  /* SERVICES */
-  .section { padding: 120px 60px; max-width: 1200px; margin: 0 auto; }
-  .section-full { padding: 120px 60px; }
-  .section-full-inner { max-width: 1200px; margin: 0 auto; }
-
-  .section-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 70px;
-  }
-  .section-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-  .section-eyebrow-line {
-    width: 28px; height: 1px;
-    background: var(--gold);
-  }
-  .section-eyebrow span {
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(42px, 6vw, 72px);
-    line-height: 0.95;
-    letter-spacing: 1px;
-  }
-  .section-title span { color: var(--gold); }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-  .service-card {
-    background: var(--charcoal);
-    padding: 44px 36px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, background 0.3s ease;
-    cursor: none;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 0; height: 3px;
-    background: var(--gold);
-    transition: width 0.4s ease;
-  }
-  .service-card:hover { background: var(--steel); transform: translateY(-4px); }
-  .service-card:hover::before { width: 100%; }
-  .service-icon {
-    width: 52px; height: 52px;
-    background: rgba(212,168,67,0.1);
-    border: 1px solid rgba(212,168,67,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-    font-size: 22px;
-    transition: background 0.3s ease;
-  }
-  .service-card:hover .service-icon {
-    background: rgba(212,168,67,0.2);
-  }
-  .service-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-    color: var(--white);
-  }
-  .service-desc {
-    font-size: 14px;
-    color: var(--silver);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-  .service-num {
-    position: absolute;
-    top: 24px; right: 28px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px;
-    color: rgba(212,168,67,0.06);
-    line-height: 1;
-    letter-spacing: 2px;
-  }
-
-  /* WHY US */
-  .why-section {
-    background: var(--charcoal);
-    padding: 120px 60px;
-  }
-  .why-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: center;
-  }
-  .why-visual {
-    position: relative;
-  }
-  .why-big-text {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 160px;
-    line-height: 0.85;
-    color: rgba(212,168,67,0.06);
-    letter-spacing: 4px;
-    position: absolute;
-    top: -30px;
-    left: -20px;
-  }
-  .why-card {
-    background: var(--black);
-    padding: 40px;
-    position: relative;
-    border-left: 3px solid var(--gold);
-  }
-  .why-card-quote {
-    font-size: 60px;
-    color: var(--gold);
-    font-family: 'Bebas Neue', sans-serif;
-    line-height: 0.8;
-    margin-bottom: 16px;
-    opacity: 0.4;
-  }
-  .why-card p {
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--ash);
-    line-height: 1.7;
-  }
-  .why-card-sig {
-    margin-top: 24px;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-  }
-  .why-features {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .why-feature {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 14px;
-    color: var(--ash);
-    font-weight: 400;
-  }
-  .why-feature-check {
-    width: 24px; height: 24px;
-    background: rgba(212,168,67,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 12px;
-    color: var(--gold);
-  }
-
-  .why-right {}
-  .why-points {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-top: 50px;
-  }
-  .why-point {
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-  }
-  .why-point-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    color: rgba(212,168,67,0.25);
-    line-height: 1;
-    flex-shrink: 0;
-    width: 50px;
-  }
-  .why-point-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-  }
-  .why-point-text {
-    font-size: 14px;
-    color: var(--silver);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* PROCESS */
-  .process-section { padding: 120px 60px; }
-  .process-inner { max-width: 1200px; margin: 0 auto; }
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 70px;
-    position: relative;
-  }
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 36px;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: 0.3;
-  }
-  .process-step {
-    padding: 0 24px;
-    text-align: center;
-    position: relative;
-  }
-  .process-step-num {
-    width: 72px; height: 72px;
-    background: var(--charcoal);
-    border: 1px solid rgba(212,168,67,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 28px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    color: var(--gold);
-    letter-spacing: 2px;
-    position: relative;
-    z-index: 1;
-    transition: background 0.3s ease, border-color 0.3s ease;
-    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-  }
-  .process-step:hover .process-step-num {
-    background: rgba(212,168,67,0.15);
-    border-color: var(--gold);
-  }
-  .process-step-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    color: var(--white);
-  }
-  .process-step-text {
-    font-size: 13px;
-    color: var(--silver);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* TESTIMONIALS */
-  .testimonials-section {
-    background: var(--charcoal);
-    padding: 120px 60px;
-  }
-  .testimonials-inner { max-width: 1200px; margin: 0 auto; }
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 70px;
-  }
-  .testimonial-card {
-    background: var(--black);
-    padding: 36px;
-    position: relative;
-    border-top: 2px solid transparent;
-    transition: border-color 0.3s ease;
-  }
-  .testimonial-card:hover { border-color: var(--gold); }
-  .testimonial-stars {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 20px;
-  }
-  .star { color: var(--gold); font-size: 14px; }
-  .testimonial-text {
-    font-size: 15px;
-    color: var(--ash);
-    line-height: 1.75;
-    font-weight: 300;
-    font-style: italic;
-    margin-bottom: 28px;
-  }
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .testimonial-avatar {
-    width: 42px; height: 42px;
-    background: rgba(212,168,67,0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    color: var(--gold);
-    flex-shrink: 0;
-  }
-  .author-name {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--white);
-    letter-spacing: 0.5px;
-  }
-  .author-location {
-    font-size: 11px;
-    color: var(--silver);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  /* SERVICE AREA */
-  .area-section {
-    padding: 120px 60px;
-  }
-  .area-inner { max-width: 1200px; margin: 0 auto; }
-  .area-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    margin-top: 70px;
-    align-items: center;
-  }
-  .area-map {
-    background: var(--charcoal);
-    border: 1px solid rgba(212,168,67,0.1);
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .area-map-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  /* SVG-based stylized map of Thunder Bay area */
-  .map-svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .area-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 40px;
-    margin-top: 32px;
-  }
-  .area-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    color: var(--ash);
-    font-weight: 400;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-  .area-item::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--gold);
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    flex-shrink: 0;
-  }
-  .area-note {
-    font-size: 13px;
-    color: var(--silver);
-    line-height: 1.7;
-    margin-top: 20px;
-    font-weight: 300;
-  }
-
-  /* CTA */
-  .cta-section {
-    background: var(--gold);
-    padding: 100px 60px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-section::before {
-    content: 'VP';
-    position: absolute;
-    right: -40px;
-    top: -20px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 320px;
-    color: rgba(0,0,0,0.07);
-    line-height: 1;
-    letter-spacing: 20px;
-  }
-  .cta-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    z-index: 1;
-    gap: 60px;
-  }
-  .cta-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 6vw, 72px);
-    color: var(--black);
-    line-height: 0.95;
-    letter-spacing: 2px;
-  }
-  .cta-sub {
-    font-size: 16px;
-    color: rgba(10,10,10,0.65);
-    margin-top: 16px;
-    font-weight: 400;
-    max-width: 440px;
-  }
-  .cta-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex-shrink: 0;
-    align-items: flex-start;
-  }
-  .btn-dark {
-    background: var(--black);
-    color: var(--white);
-    padding: 16px 40px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 3px;
-    text-decoration: none;
-    display: inline-block;
-    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-    transition: background 0.2s ease, transform 0.2s ease;
-    cursor: none;
-  }
-  .btn-dark:hover { background: var(--charcoal); transform: translateY(-2px); }
-  .cta-phone {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    color: var(--black);
-    letter-spacing: 3px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-  .cta-phone:hover { opacity: 0.75; }
-
-  /* CONTACT */
-  .contact-section {
-    background: var(--charcoal);
-    padding: 120px 60px;
-  }
-  .contact-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 80px;
-  }
-  .contact-info {}
-  .contact-detail {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-    margin-top: 36px;
-    padding-bottom: 36px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .contact-detail:last-of-type { border-bottom: none; }
-  .contact-detail-icon {
-    width: 44px; height: 44px;
-    background: rgba(212,168,67,0.1);
-    border: 1px solid rgba(212,168,67,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 18px;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  }
-  .contact-detail-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .contact-detail-value {
-    font-size: 16px;
-    color: var(--ash);
-    font-weight: 400;
-    line-height: 1.5;
-  }
-  .contact-form {}
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .form-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
-  }
-  .form-input, .form-select, .form-textarea {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    color: var(--white);
-    padding: 14px 18px;
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s ease, background 0.2s ease;
-    cursor: none;
-  }
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--gold);
-    background: rgba(212,168,67,0.05);
-  }
-  .form-select option { background: var(--charcoal); }
-  .form-textarea { resize: vertical; min-height: 120px; }
-  .form-submit {
-    background: var(--gold);
-    color: var(--black);
-    border: none;
-    padding: 16px 48px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 3px;
-    cursor: none;
-    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-    transition: background 0.2s ease, transform 0.2s ease;
-    width: 100%;
-    margin-top: 8px;
-  }
-  .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
-
-  /* FOOTER */
-  footer {
-    background: var(--black);
-    padding: 70px 60px 30px;
-    border-top: 1px solid rgba(212,168,67,0.1);
-  }
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .footer-top {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 60px;
-    padding-bottom: 60px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .footer-brand p {
-    font-size: 13px;
-    color: var(--silver);
-    line-height: 1.75;
-    font-weight: 300;
-    margin-top: 20px;
-    max-width: 260px;
-  }
-  .footer-col-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    margin-bottom: 20px;
-  }
-  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-links a {
-    text-decoration: none;
-    font-size: 13px;
-    color: var(--silver);
-    font-weight: 300;
-    transition: color 0.2s ease;
-    cursor: none;
-  }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 30px;
-  }
-  .footer-copy {
-    font-size: 12px;
-    color: var(--iron);
-    letter-spacing: 1px;
-  }
-  .footer-legal {
-    display: flex;
-    gap: 24px;
-  }
-  .footer-legal a {
-    font-size: 11px;
-    color: var(--iron);
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.2s ease;
-    cursor: none;
-  }
-  .footer-legal a:hover { color: var(--silver); }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Mobile menu */
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10,10,10,0.98);
-    z-index: 999;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    letter-spacing: 4px;
-    text-decoration: none;
-    color: var(--white);
-    transition: color 0.2s ease;
-    cursor: none;
-  }
-  .mobile-menu a:hover { color: var(--gold); }
-  .mobile-close {
-    position: absolute;
-    top: 28px; right: 40px;
-    background: none; border: none;
-    color: var(--ash);
-    font-size: 28px;
-    cursor: none;
-    font-family: 'Barlow', sans-serif;
-  }
-
-  @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    .nav-burger { display: block; color: var(--white); font-size: 24px; }
-    .hero-content { padding: 0 24px; }
-    .hero-stats { gap: 32px; flex-wrap: wrap; }
-    .section, .section-full { padding: 80px 24px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .why-inner { grid-template-columns: 1fr; gap: 48px; }
-    .why-big-text { font-size: 80px; }
-    .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
-    .process-steps::before { display: none; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .area-grid { grid-template-columns: 1fr; }
-    .cta-inner { flex-direction: column; }
-    .contact-inner { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
-    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-    .form-row { grid-template-columns: 1fr; }
-    .hero-title { font-size: 64px; }
+  :root{--navy:#0a1628;--navy-mid:#132040;--gold:#e8a020;--gold-light:#f5c55a;--slate:#2a3a52;--offwhite:#f4f1eb;--warm-gray:#9a9186;--light-gray:#d8d3cb;--text-body:#e8e4dc;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--text-body);overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,160,32,.15);transition:all .3s}
+  .nav-logo{display:flex;align-items:center;gap:14px}
+  .logo-badge{width:46px;height:46px;background:var(--gold);display:flex;align-items:center;justify-content:center;clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);flex-shrink:0}
+  .logo-badge span{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--navy);letter-spacing:1px}
+  .logo-text{display:flex;flex-direction:column;line-height:1}
+  .logo-text .company{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--offwhite);letter-spacing:2px}
+  .logo-text .tagline{font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:600}
+  .nav-links{display:flex;gap:36px;list-style:none}
+  .nav-links a{color:var(--light-gray);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:color .2s;position:relative}
+  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-links a:hover::after{transform:scaleX(1)}
+  .nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:10px 24px;font-weight:700!important;letter-spacing:1.5px!important;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+  .nav-cta:hover{background:var(--gold-light)!important}
+  .nav-cta::after{display:none!important}
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;padding-top:82px}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(232,160,32,.06) 0%,transparent 60%),linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%)}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,160,32,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,.04) 1px,transparent 1px);background-size:60px 60px}
+  .hero-diag{position:absolute;top:0;right:40%;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);transform:skewX(-8deg);opacity:.3}
+  .hero-left{position:relative;z-index:2;padding:80px 60px 80px 80px;display:flex;flex-direction:column;justify-content:center}
+  .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px;animation:fsu .7s ease both}
+  .eyebrow-line{width:40px;height:2px;background:var(--gold)}
+  .eyebrow-text{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+  .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,7vw,110px);line-height:.92;letter-spacing:2px;color:var(--offwhite);margin-bottom:30px;animation:fsu .7s .15s ease both}
+  .hero-title .hl{color:var(--gold);display:block}
+  .hero-desc{font-size:17px;line-height:1.7;color:var(--warm-gray);font-weight:300;max-width:460px;margin-bottom:44px;animation:fsu .7s .3s ease both}
+  .hero-desc strong{color:var(--offwhite);font-weight:500}
+  .hero-actions{display:flex;gap:16px;align-items:center;animation:fsu .7s .45s ease both}
+  .btn-primary{background:var(--gold);color:var(--navy);padding:16px 36px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:background .2s,transform .2s;display:inline-block}
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+  .btn-ghost{color:var(--offwhite);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:8px;transition:color .2s}
+  .btn-ghost:hover{color:var(--gold)}
+  .btn-ghost .arr{width:28px;height:28px;border:1px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;transition:transform .2s}
+  .btn-ghost:hover .arr{transform:translateX(4px)}
+  .hero-stats{display:flex;gap:40px;margin-top:64px;padding-top:40px;border-top:1px solid rgba(232,160,32,.15);animation:fsu .7s .6s ease both}
+  .stat-item{display:flex;flex-direction:column}
+  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--gold);line-height:1}
+  .stat-label{font-size:11px;color:var(--warm-gray);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-top:4px}
+  .hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:40px}
+  .hero-visual{position:relative;width:100%;max-width:460px;animation:fsu .9s .2s ease both}
+  .hero-card{background:var(--slate);border:1px solid rgba(232,160,32,.2);padding:36px;position:relative;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px))}
+  .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .icon-row{display:flex;gap:14px;margin-bottom:24px}
+  .icon-mini{width:42px;height:42px;background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .card-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--offwhite);letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
+  .card-sub{font-size:13px;color:var(--warm-gray);line-height:1.5;margin-bottom:22px}
+  .avail-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,180,100,.12);border:1px solid rgba(0,180,100,.3);padding:8px 14px;font-size:12px;font-weight:600;color:#4ecb8d;letter-spacing:1px;text-transform:uppercase}
+  .avail-dot{width:7px;height:7px;border-radius:50%;background:#4ecb8d;animation:pg 2s infinite}
+  @keyframes pg{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+  .float-badge{position:absolute;background:var(--gold);color:var(--navy);padding:12px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .fb-tr{top:-20px;right:24px;clip-path:polygon(0 0,100% 0,100% 100%,10px 100%);animation:fl 3s ease-in-out infinite}
+  .fb-bl{bottom:-20px;left:24px;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 100%,0 100%);animation:fl 3s 1.5s ease-in-out infinite}
+  @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .trust-bar{background:var(--gold);padding:16px 80px;display:flex;align-items:center;justify-content:space-between;overflow:hidden}
+  .trust-item{display:flex;align-items:center;gap:10px;color:var(--navy);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+  .trust-sep{width:4px;height:4px;background:#0a1628;opacity:.4;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);flex-shrink:0}
+  section{padding:100px 80px}
+  .sec-label{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .sec-label-line{width:30px;height:2px;background:var(--gold)}
+  .sec-label-text{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+  .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:2px;color:var(--offwhite)}
+  #services{background:var(--navy-mid);position:relative;overflow:hidden}
+  #services::before{content:'';position:absolute;top:0;right:0;width:400px;height:400px;background:radial-gradient(circle,rgba(232,160,32,.05) 0%,transparent 70%)}
+  .svc-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
+  .svc-header-r{max-width:340px;text-align:right}
+  .svc-header-r p{font-size:15px;color:var(--warm-gray);line-height:1.7;font-weight:300}
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+  .svc-card{background:var(--navy);padding:36px 28px;position:relative;overflow:hidden;cursor:default;transition:transform .3s;border-top:3px solid transparent}
+  .svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,160,32,.04) 0%,transparent 60%);opacity:0;transition:opacity .3s}
+  .svc-card:hover{transform:translateY(-6px);border-top-color:var(--gold)}
+  .svc-card:hover::before{opacity:1}
+  .svc-card:hover .svc-num{color:var(--gold)}
+  .svc-num{font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(232,160,32,.08);line-height:1;transition:color .3s;margin-bottom:16px;display:block}
+  .svc-emoji{font-size:32px;margin-bottom:16px;display:block}
+  .svc-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--offwhite);margin-bottom:10px}
+  .svc-desc{font-size:13px;color:var(--warm-gray);line-height:1.6;font-weight:300}
+  .svc-arrow{position:absolute;bottom:28px;right:28px;color:var(--gold);font-size:20px;opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s}
+  .svc-card:hover .svc-arrow{opacity:1;transform:translateX(0)}
+  #why{background:var(--navy)}
+  .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .why-vis{position:relative}
+  .why-shape{width:100%;padding-bottom:100%;background:var(--slate);clip-path:polygon(0 0,100% 0,100% 85%,85% 100%,0 100%);position:relative;overflow:hidden}
+  .why-shape::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(232,160,32,.03) 0px,rgba(232,160,32,.03) 1px,transparent 1px,transparent 20px)}
+  .why-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+  .why-icon{font-size:72px;display:block;margin-bottom:8px;filter:drop-shadow(0 0 20px rgba(232,160,32,.3))}
+  .why-txt{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);letter-spacing:3px}
+  .why-corners{position:absolute;top:0;bottom:0;left:0;right:0;pointer-events:none}
+  .cb{position:absolute;background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 16px}
+  .cb.tl{top:20px;left:20px;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+  .cb.br{bottom:30px;right:20px;clip-path:polygon(8px 0,100% 0,100% 100%,0 100%)}
+  .why-feats{display:flex;flex-direction:column;gap:32px}
+  .feat{display:flex;gap:20px;align-items:flex-start;padding-bottom:32px;border-bottom:1px solid rgba(232,160,32,.08)}
+  .feat:last-child{border-bottom:none;padding-bottom:0}
+  .feat-icon{width:50px;height:50px;flex-shrink:0;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.2);display:flex;align-items:center;justify-content:center;font-size:22px;position:relative}
+  .feat-icon::after{content:'';position:absolute;top:-1px;left:-1px;width:12px;height:12px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
+  .feat-txt h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--offwhite);margin-bottom:6px}
+  .feat-txt p{font-size:14px;color:var(--warm-gray);line-height:1.6;font-weight:300}
+  #process{background:var(--navy-mid);text-align:center}
+  #process .sec-label{justify-content:center}
+  .proc-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin-top:60px}
+  .proc-steps::before{content:'';position:absolute;top:35px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold),transparent);opacity:.3}
+  .proc-step{padding:0 24px}
+  .step-circ{width:70px;height:70px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px;position:relative;background:var(--navy)}
+  .step-circ::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(232,160,32,.2)}
+  .step-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);line-height:1}
+  .step-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--offwhite);margin-bottom:12px}
+  .step-desc{font-size:13px;color:var(--warm-gray);line-height:1.6;font-weight:300}
+  #testi{background:var(--navy)}
+  .testi-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
+  .stars{color:var(--gold);font-size:18px;letter-spacing:2px}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .testi-card{background:var(--navy-mid);padding:36px;border:1px solid rgba(232,160,32,.08);position:relative;transition:border-color .3s}
+  .testi-card:hover{border-color:rgba(232,160,32,.25)}
+  .testi-card::before{content:'"';position:absolute;top:16px;right:24px;font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(232,160,32,.06);line-height:1}
+  .testi-stars{color:var(--gold);font-size:14px;margin-bottom:16px}
+  .testi-txt{font-size:15px;color:var(--text-body);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:24px}
+  .testi-auth{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid rgba(232,160,32,.1)}
+  .auth-av{width:44px;height:44px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--navy);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);flex-shrink:0}
+  .auth-info .name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:1px;color:var(--offwhite)}
+  .auth-info .loc{font-size:12px;color:var(--warm-gray);margin-top:2px}
+  .cta-band{background:var(--gold);padding:80px;position:relative;overflow:hidden}
+  .cta-band::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(10,22,40,.04) 0px,rgba(10,22,40,.04) 1px,transparent 1px,transparent 24px)}
+  .cta-inner{position:relative;display:flex;justify-content:space-between;align-items:center;gap:40px}
+  .cta-txt h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,72px);color:var(--navy);line-height:1;letter-spacing:2px;margin-bottom:10px}
+  .cta-txt p{font-size:16px;color:#132040;font-weight:400}
+  .cta-acts{display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+  .btn-dark{background:var(--navy);color:var(--gold);padding:18px 44px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);transition:background .2s;display:inline-block;white-space:nowrap}
+  .btn-dark:hover{background:var(--slate)}
+  .cta-phone{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--navy);letter-spacing:2px;display:flex;align-items:center;gap:10px}
+  #contact{background:var(--navy-mid)}
+  .contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;margin-top:60px}
+  .contact-info{display:flex;flex-direction:column;gap:32px}
+  .contact-item{display:flex;gap:18px;align-items:flex-start}
+  .ci-icon{width:48px;height:48px;flex-shrink:0;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.2);display:flex;align-items:center;justify-content:center;font-size:20px}
+  .contact-item h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .contact-item p,.contact-item a{font-size:16px;color:var(--offwhite);text-decoration:none;line-height:1.5}
+  .contact-item a:hover{color:var(--gold)}
+  .svc-areas{margin-top:40px;padding:28px;border:1px solid rgba(232,160,32,.15);background:rgba(232,160,32,.03)}
+  .areas-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .areas-list{display:flex;flex-wrap:wrap;gap:8px}
+  .area-tag{background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.15);color:var(--light-gray);font-size:12px;padding:5px 12px;letter-spacing:1px;font-weight:500}
+  .contact-form{display:flex;flex-direction:column;gap:18px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .form-group{display:flex;flex-direction:column;gap:8px}
+  .form-group label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+  .form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.04);border:1px solid rgba(232,160,32,.15);color:var(--offwhite);padding:14px 18px;font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color .2s;width:100%;appearance:none}
+  .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(154,145,134,.5)}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+  .form-group select option{background:var(--navy-mid);color:var(--offwhite)}
+  .form-group textarea{resize:vertical;min-height:120px}
+  .form-submit{background:var(--gold);color:var(--navy);border:none;padding:18px 40px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:background .2s,transform .2s;align-self:flex-start}
+  .form-submit:hover{background:var(--gold-light);transform:translateY(-2px)}
+  footer{background:var(--navy);border-top:1px solid rgba(232,160,32,.1);padding:60px 80px 30px}
+  .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:48px}
+  .footer-brand p{font-size:14px;color:var(--warm-gray);line-height:1.7;font-weight:300;margin-top:16px;max-width:280px}
+  .footer-col h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .footer-col ul li a{color:var(--warm-gray);text-decoration:none;font-size:13px;transition:color .2s;display:flex;align-items:center;gap:6px}
+  .footer-col ul li a:hover{color:var(--gold)}
+  .footer-col ul li a::before{content:'—';color:rgba(232,160,32,.3);font-size:10px}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid rgba(232,160,32,.08)}
+  .footer-bottom p{font-size:12px;color:var(--warm-gray);letter-spacing:1px}
+  .footer-bottom strong{color:var(--gold)}
+  .foot-badge{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray)}
+  .foot-badge .dot{width:6px;height:6px;border-radius:50%;background:#4ecb8d;animation:pg 2s infinite}
+  @keyframes fsu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  @media(max-width:900px){
+    nav{padding:14px 24px}
+    .nav-links{display:none}
+    section{padding:64px 24px}
+    .hero{grid-template-columns:1fr}
+    .hero-right{display:none}
+    .hero-left{padding:40px 24px}
+    .svc-grid{grid-template-columns:1fr 1fr}
+    .svc-header{flex-direction:column;gap:20px}
+    .svc-header-r{text-align:left;max-width:100%}
+    .why-layout{grid-template-columns:1fr}
+    .why-vis{display:none}
+    .proc-steps{grid-template-columns:1fr 1fr}
+    .proc-steps::before{display:none}
+    .testi-grid{grid-template-columns:1fr}
+    .cta-inner{flex-direction:column;text-align:center}
+    .cta-acts{align-items:center}
+    .contact-layout{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    .footer-top{grid-template-columns:1fr 1fr;gap:40px}
+    .trust-bar{padding:12px 24px;flex-wrap:wrap;gap:12px}
+    .cta-band{padding:40px 24px}
+    .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+    .hero-stats{flex-wrap:wrap;gap:24px}
   }
 </style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- Nav -->
-<nav id="mainNav">
-  <a href="#" class="logo">
+<nav>
+  <div class="nav-logo">
     <div class="logo-badge"><span>VP</span></div>
     <div class="logo-text">
-      <span class="logo-name">VP Contracting</span>
-      <span class="logo-tagline">Thunder Bay, Ontario</span>
+      <span class="company">VP Contracting</span>
+      <span class="tagline">Thunder Bay, Ontario</span>
     </div>
-  </a>
+  </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#why">Why Us</a></li>
     <li><a href="#process">Process</a></li>
-    <li><a href="#area">Service Area</a></li>
+    <li><a href="#testi">Reviews</a></li>
     <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
   </ul>
-  <button class="nav-burger" id="burgerBtn" onclick="document.getElementById('mobileMenu').classList.add('open')">☰</button>
 </nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
-  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
-  <a href="#why-us" onclick="document.getElementById('mobileMenu').classList.remove('open')">Why Us</a>
-  <a href="#process" onclick="document.getElementById('mobileMenu').classList.remove('open')">Process</a>
-  <a href="#area" onclick="document.getElementById('mobileMenu').classList.remove('open')">Service Area</a>
-  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
-</div>
-
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-noise"></div>
-  <div class="hero-slash"></div>
-  <div class="hero-slash-2"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span>Thunder Bay's Trusted Trades</span>
-    </div>
-    <h1 class="hero-title">
-      No Job<br>
-      <span class="line-gold">Too Small.</span><br>
-      <span class="line-stroke">None Too</span><br>
-      Big.
-    </h1>
-    <p class="hero-subtitle">From leaky faucets to full renovations — VP Contracting delivers professional handyman and maintenance services across Thunder Bay and surrounding communities.</p>
+<section class="hero" id="home">
+  <div class="hero-bg"></div><div class="hero-grid"></div><div class="hero-diag"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Thunder Bay's #1 Handyman Service</span></div>
+    <h1 class="hero-title">No Job<br>Too<br><span class="hl">Big Or</span><br>Small.</h1>
+    <p class="hero-desc"><strong>VP Contracting</strong> delivers expert handyman and maintenance services across Thunder Bay. From quick repairs to full renovations — reliable, skilled, and done right the first time.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Get a Free Quote</a>
-      <a href="#services" class="btn-secondary">
-        View Services
-        <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      <a href="#contact" class="btn-primary">Get Free Estimate</a>
+      <a href="#services" class="btn-ghost">Our Services <span class="arr">→</span></a>
     </div>
     <div class="hero-stats">
-      <div>
-        <div class="stat-number">15+</div>
-        <div class="stat-label">Years Experience</div>
+      <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Jobs Completed</span></div>
+      <div class="stat-item"><span class="stat-num">10+</span><span class="stat-label">Years Experience</span></div>
+      <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Satisfaction Rate</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="float-badge fb-tr">🏆 Licensed &amp; Insured</div>
+      <div class="hero-card">
+        <div class="icon-row"><div class="icon-mini">🔧</div><div class="icon-mini">🪟</div><div class="icon-mini">💡</div><div class="icon-mini">🚿</div></div>
+        <div class="card-title">All-In-One Maintenance</div>
+        <div class="card-sub">Plumbing · Electrical · Carpentry · Painting · Roofing · Flooring · Drywall &amp; More</div>
+        <div class="avail-badge"><span class="avail-dot"></span>Available Now — Same Day Service</div>
       </div>
-      <div>
-        <div class="stat-number">500+</div>
-        <div class="stat-label">Jobs Completed</div>
-      </div>
-      <div>
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Licensed & Insured</div>
-      </div>
-      <div>
-        <div class="stat-number">24h</div>
-        <div class="stat-label">Response Time</div>
-      </div>
+      <div class="float-badge fb-bl">⭐ 5-Star Rated</div>
     </div>
   </div>
 </section>
 
-<!-- Marquee -->
-<div class="marquee-section">
-  <div class="marquee-track" id="marqueeTrack">
-    <div class="marquee-item"><span>Plumbing Repairs</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Drywall & Painting</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Flooring Installation</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Carpentry & Trim</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Electrical Fixes</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Deck Building</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Snow Removal</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Window & Door Repair</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Basement Finishing</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Gutter Cleaning</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Fence Installation</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Tile & Grout</span><div class="marquee-dot"></div></div>
-    <!-- duplicate for seamless loop -->
-    <div class="marquee-item"><span>Plumbing Repairs</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Drywall & Painting</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Flooring Installation</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Carpentry & Trim</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Electrical Fixes</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Deck Building</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Snow Removal</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Window & Door Repair</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Basement Finishing</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Gutter Cleaning</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Fence Installation</span><div class="marquee-dot"></div></div>
-    <div class="marquee-item"><span>Tile & Grout</span><div class="marquee-dot"></div></div>
-  </div>
+<div class="trust-bar">
+  <div class="trust-item">✔ Licensed &amp; Insured</div><div class="trust-sep"></div>
+  <div class="trust-item">✔ Free Estimates</div><div class="trust-sep"></div>
+  <div class="trust-item">✔ Same-Day Service Available</div><div class="trust-sep"></div>
+  <div class="trust-item">✔ Locally Owned &amp; Operated</div><div class="trust-sep"></div>
+  <div class="trust-item">✔ Satisfaction Guaranteed</div>
 </div>
 
-<!-- Services -->
 <section id="services">
-  <div class="section">
-    <div class="section-header">
-      <div>
-        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>What We Do</span></div>
-        <h2 class="section-title reveal">Complete Home<br><span>Maintenance</span> Services</h2>
-      </div>
+  <div class="svc-header reveal">
+    <div><div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">What We Do</span></div><h2 class="sec-title">Our Services</h2></div>
+    <div class="svc-header-r"><p>From emergency repairs to planned renovations, VP Contracting handles it all with professional expertise and a commitment to quality workmanship.</p></div>
+  </div>
+  <div class="svc-grid reveal">
+    <div class="svc-card"><span class="svc-num">01</span><span class="svc-emoji">🔧</span><div class="svc-name">Plumbing Repairs</div><div class="svc-desc">Leaky faucets, pipe repairs, toilet installation, drain cleaning, and general plumbing maintenance.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">02</span><span class="svc-emoji">💡</span><div class="svc-name">Electrical Work</div><div class="svc-desc">Outlet installation, light fixtures, ceiling fans, switch replacements, and minor electrical upgrades.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">03</span><span class="svc-emoji">🪚</span><div class="svc-name">Carpentry</div><div class="svc-desc">Custom shelving, door repairs, trim work, deck maintenance, framing, and cabinet installation.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">04</span><span class="svc-emoji">🎨</span><div class="svc-name">Painting</div><div class="svc-desc">Interior and exterior painting, drywall patching, priming, and professional finishing for any room.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">05</span><span class="svc-emoji">🪟</span><div class="svc-name">Windows &amp; Doors</div><div class="svc-desc">Window installation and sealing, door repair and replacement, weatherstripping, and lock work.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">06</span><span class="svc-emoji">🏠</span><div class="svc-name">Roofing &amp; Eavestroughs</div><div class="svc-desc">Shingle repair, eavestrough cleaning, flashing repair, and minor roof patching to protect your home.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">07</span><span class="svc-emoji">🚿</span><div class="svc-name">Bathroom &amp; Kitchen</div><div class="svc-desc">Tile installation, caulking, vanity upgrades, backsplash, fixture replacement, and renovations.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">08</span><span class="svc-emoji">❄️</span><div class="svc-name">Seasonal Maintenance</div><div class="svc-desc">Winterizing, snow load prevention, spring clean-up, deck staining, and year-round property upkeep.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">09</span><span class="svc-emoji">🧱</span><div class="svc-name">Drywall &amp; Plastering</div><div class="svc-desc">Hole repairs, full wall installation, taping, mudding, and smooth finishing for walls and ceilings.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">10</span><span class="svc-emoji">🪵</span><div class="svc-name">Flooring</div><div class="svc-desc">Hardwood, laminate, vinyl plank, tile installation, subfloor repair, and floor refinishing.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">11</span><span class="svc-emoji">🌿</span><div class="svc-name">Outdoor &amp; Landscaping</div><div class="svc-desc">Fence repair, deck building, concrete patching, interlock, shed assembly, and outdoor repairs.</div><span class="svc-arrow">→</span></div>
+    <div class="svc-card"><span class="svc-num">12</span><span class="svc-emoji">🛠️</span><div class="svc-name">General Handyman</div><div class="svc-desc">Furniture assembly, TV mounting, smart home devices, caulking, odd jobs, and anything else you need.</div><span class="svc-arrow">→</span></div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="why-layout">
+    <div class="why-vis reveal">
+      <div class="why-shape"><div class="why-center"><span class="why-icon">🏗️</span><div class="why-txt">Built On Trust</div></div></div>
+      <div class="why-corners"><div class="cb tl">Thunder Bay Since 2014</div><div class="cb br">Fully Insured</div></div>
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-num">01</div>
-        <div class="service-icon">🔧</div>
-        <div class="service-name">Plumbing Repairs</div>
-        <p class="service-desc">Leaky faucets, running toilets, pipe repairs, drain cleaning, fixture installation, and basic plumbing maintenance for homes and businesses.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-num">02</div>
-        <div class="service-icon">🎨</div>
-        <div class="service-name">Drywall & Painting</div>
-        <p class="service-desc">Patch holes, fix cracks, tape & mud, full drywall installation, interior and exterior painting, and stain/varnish finishing work.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-num">03</div>
-        <div class="service-icon">🪵</div>
-        <div class="service-name">Carpentry & Trim</div>
-        <p class="service-desc">Custom carpentry, baseboards, crown moulding, door casings, built-in shelving, cabinet repairs, and general woodworking projects.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-num">04</div>
-        <div class="service-icon">⚡</div>
-        <div class="service-name">Electrical (Minor)</div>
-        <p class="service-desc">Outlet and switch replacement, light fixture installation, ceiling fans, under-cabinet lighting, and minor panel work — all code compliant.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-num">05</div>
-        <div class="service-icon">🏠</div>
-        <div class="service-name">Flooring</div>
-        <p class="service-desc">Hardwood, laminate, vinyl plank, and tile installation. Subfloor repair, transitions, squeaky floor fixes, and refinishing.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-num">06</div>
-        <div class="service-icon">🌿</div>
-        <div class="service-name">Decks & Fencing</div>
-        <p class="service-desc">New deck construction, deck repairs and staining, fence installation, gate building, and post replacement in Northern Ontario conditions.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-num">07</div>
-        <div class="service-icon">❄️</div>
-        <div class="service-name">Seasonal Maintenance</div>
-        <p class="service-desc">Snow removal, eavestroughing cleanup, weatherstripping, caulking, exterior winterization, and spring cleanup and maintenance checks.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-num">08</div>
-        <div class="service-icon">🚪</div>
-        <div class="service-name">Doors & Windows</div>
-        <p class="service-desc">Door installation and hardware, window caulking and sealing, screen replacement, storm door fitting, and threshold repairs.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-num">09</div>
-        <div class="service-icon">🛁</div>
-        <div class="service-name">Bathroom & Kitchen</div>
-        <p class="service-desc">Tile and grout work, vanity installation, backsplash tiling, caulking, exhaust fan replacement, and minor renovation projects.</p>
-      </div>
+    <div class="why-feats reveal">
+      <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">Why VP Contracting</span></div>
+      <h2 class="sec-title" style="margin-bottom:48px">Your Home,<br>Our Priority</h2>
+      <div class="feat"><div class="feat-icon">🏅</div><div class="feat-txt"><h3>Licensed, Insured &amp; Trusted</h3><p>Every technician is fully licensed and insured. You get professional work with complete peace of mind — your property is always protected.</p></div></div>
+      <div class="feat"><div class="feat-icon">⚡</div><div class="feat-txt"><h3>Fast Response Times</h3><p>We know repairs can't always wait. Same-day and emergency service is available throughout Thunder Bay and surrounding areas.</p></div></div>
+      <div class="feat"><div class="feat-icon">💰</div><div class="feat-txt"><h3>Transparent, Fair Pricing</h3><p>No hidden fees, no surprises. We provide clear estimates upfront so you always know what you're paying before work begins.</p></div></div>
+      <div class="feat"><div class="feat-icon">✅</div><div class="feat-txt"><h3>Satisfaction Guaranteed</h3><p>We stand behind every job we do. If something isn't right, we'll make it right — that's the VP Contracting promise.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- Why Us -->
-<section id="why-us" class="why-section">
-  <div class="why-inner">
-    <div class="why-left reveal">
-      <div class="why-big-text">VP</div>
-      <div class="why-card">
-        <div class="why-card-quote">"</div>
-        <p>We treat every home like it's our own. In Thunder Bay, trust and quality aren't optional — they're the whole job.</p>
-        <div class="why-card-sig">— VP Contracting Team</div>
-      </div>
-      <div class="why-features">
-        <div class="why-feature"><div class="why-feature-check">✓</div>Fully licensed & insured in Ontario</div>
-        <div class="why-feature"><div class="why-feature-check">✓</div>WSIB coverage on all work</div>
-        <div class="why-feature"><div class="why-feature-check">✓</div>Written quotes — no surprise bills</div>
-        <div class="why-feature"><div class="why-feature-check">✓</div>Satisfaction guaranteed or we fix it</div>
-        <div class="why-feature"><div class="why-feature-check">✓</div>Locally owned — Thunder Bay proud</div>
-      </div>
-    </div>
-    <div class="why-right">
-      <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Why VP Contracting</span></div>
-      <h2 class="section-title reveal">Built on<br><span>Reputation.</span><br>Backed by<br>Results.</h2>
-      <div class="why-points">
-        <div class="why-point reveal">
-          <div class="why-point-num">01</div>
-          <div>
-            <div class="why-point-title">Deep Local Roots</div>
-            <p class="why-point-text">We've served Thunder Bay families for over 15 years. We know this city — its homes, its winters, and what it takes to do the job right in Northern Ontario.</p>
-          </div>
-        </div>
-        <div class="why-point reveal">
-          <div class="why-point-num">02</div>
-          <div>
-            <div class="why-point-title">Honest Pricing</div>
-            <p class="why-point-text">Every project starts with a clear, written quote. We discuss the scope, the cost, and the timeline before any work begins. No hidden fees, ever.</p>
-          </div>
-        </div>
-        <div class="why-point reveal">
-          <div class="why-point-num">03</div>
-          <div>
-            <div class="why-point-title">One Call, All Skills</div>
-            <p class="why-point-text">Skip the hassle of juggling multiple contractors. VP Contracting handles the full scope — from the first nail to the final coat of paint.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<section id="process">
+  <div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-text">How It Works</span></div>
+  <h2 class="sec-title reveal">Simple Process,<br>Expert Results</h2>
+  <div class="proc-steps reveal">
+    <div class="proc-step"><div class="step-circ"><span class="step-num">01</span></div><div class="step-title">Contact Us</div><div class="step-desc">Call, text, or fill out our form. Tell us what you need and we'll get back to you fast.</div></div>
+    <div class="proc-step"><div class="step-circ"><span class="step-num">02</span></div><div class="step-title">Free Estimate</div><div class="step-desc">We assess the job and provide a transparent, written quote with no obligation.</div></div>
+    <div class="proc-step"><div class="step-circ"><span class="step-num">03</span></div><div class="step-title">We Get To Work</div><div class="step-desc">Our skilled technicians arrive on time, treat your home with respect, and complete the job properly.</div></div>
+    <div class="proc-step"><div class="step-circ"><span class="step-num">04</span></div><div class="step-title">Your Approval</div><div class="step-desc">We walk you through the completed work. You only pay when you're 100% satisfied.</div></div>
   </div>
 </section>
 
-<!-- Process -->
-<section id="process" class="process-section">
-  <div class="process-inner">
-    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>How It Works</span></div>
-    <h2 class="section-title reveal">Simple.<br><span>Transparent.</span> Done Right.</h2>
-    <div class="process-steps">
-      <div class="process-step reveal">
-        <div class="process-step-num">01</div>
-        <div class="process-step-title">Reach Out</div>
-        <p class="process-step-text">Call, text, or fill out our form. Describe your project and we'll respond within 24 hours.</p>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-step-num">02</div>
-        <div class="process-step-title">Free Quote</div>
-        <p class="process-step-text">We come to you, assess the job in person, and provide a clear written estimate at no charge.</p>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-step-num">03</div>
-        <div class="process-step-title">We Get to Work</div>
-        <p class="process-step-text">Scheduling is flexible around your life. We arrive on time, work clean, and respect your space.</p>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-step-num">04</div>
-        <div class="process-step-title">Job Complete</div>
-        <p class="process-step-text">We do a final walkthrough with you. Only once you're satisfied do we consider the work done.</p>
-      </div>
-    </div>
+<section id="testi">
+  <div class="testi-hdr reveal">
+    <div><div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">Client Reviews</span></div><h2 class="sec-title">What Thunder Bay<br>Is Saying</h2></div>
+    <div><div class="stars">★★★★★</div><p style="color:var(--warm-gray);font-size:13px;margin-top:6px;letter-spacing:1px">5.0 AVERAGE RATING</p></div>
+  </div>
+  <div class="testi-grid reveal">
+    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-txt">"VP Contracting fixed a plumbing nightmare in my basement within hours of calling. Professional, clean, and priced fairly. I won't call anyone else."</p><div class="testi-auth"><div class="auth-av">MK</div><div class="auth-info"><div class="name">Mark K.</div><div class="loc">Current River, Thunder Bay</div></div></div></div>
+    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-txt">"Hired them to repaint our living room and patch drywall. The crew was on time, tidy, and did incredible work. Our home looks brand new. Highly recommend!"</p><div class="testi-auth"><div class="auth-av">SL</div><div class="auth-info"><div class="name">Sandra L.</div><div class="loc">Westfort, Thunder Bay</div></div></div></div>
+    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-txt">"Built us a beautiful deck and repaired our fence. Quality craftsmanship, great communication throughout. These guys are the real deal — Thunder Bay's best!"</p><div class="testi-auth"><div class="auth-av">TR</div><div class="auth-info"><div class="name">Tom R.</div><div class="loc">Intercity, Thunder Bay</div></div></div></div>
   </div>
 </section>
 
-<!-- Testimonials -->
-<section class="testimonials-section">
-  <div class="testimonials-inner">
-    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>What Clients Say</span></div>
-    <h2 class="section-title reveal">Thunder Bay<br><span>Speaks.</span></h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-text">"VP Contracting fixed our basement water damage, repainted the whole area, and replaced the flooring. Immaculate work, done ahead of schedule. Couldn't recommend them more."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">MK</div>
-          <div>
-            <div class="author-name">Mike K.</div>
-            <div class="author-location">Current River, Thunder Bay</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-text">"Had them build a new deck and replace all the rotted fence posts. They finished everything in two days, and it looks absolutely beautiful. Fair price, amazing quality."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">SR</div>
-          <div>
-            <div class="author-name">Sandra R.</div>
-            <div class="author-location">Westfort, Thunder Bay</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-        <p class="testimonial-text">"Called them for a leaky pipe on a Monday. They came Tuesday morning, fixed the issue, and patched the drywall perfectly. You'd never know anything was there. Five stars."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">DJ</div>
-          <div>
-            <div class="author-name">Dave J.</div>
-            <div class="author-location">Intercity, Thunder Bay</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Service Area -->
-<section id="area" class="area-section">
-  <div class="area-inner">
-    <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Where We Work</span></div>
-    <h2 class="section-title reveal">Proudly Serving<br><span>Thunder Bay</span><br>& Beyond.</h2>
-    <div class="area-grid">
-      <div class="reveal">
-        <div class="area-map">
-          <svg class="map-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="mapGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#d4a843" stop-opacity="0.15"/>
-                <stop offset="100%" stop-color="#d4a843" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <!-- Lake Superior simplified -->
-            <path d="M0,180 Q60,120 120,140 Q180,160 200,155 Q240,150 280,170 Q320,190 360,180 Q390,175 400,185 L400,300 L0,300 Z" fill="rgba(212,168,67,0.06)" stroke="rgba(212,168,67,0.2)" stroke-width="1"/>
-            <!-- Lake label -->
-            <text x="200" y="230" text-anchor="middle" fill="rgba(212,168,67,0.3)" font-family="Bebas Neue" font-size="11" letter-spacing="3">LAKE SUPERIOR</text>
-            <!-- Thunder Bay city shape -->
-            <ellipse cx="195" cy="145" rx="35" ry="20" fill="url(#mapGlow)"/>
-            <!-- Streets grid rough -->
-            <line x1="180" y1="110" x2="180" y2="165" stroke="rgba(212,168,67,0.15)" stroke-width="1"/>
-            <line x1="195" y1="110" x2="195" y2="165" stroke="rgba(212,168,67,0.15)" stroke-width="1"/>
-            <line x1="210" y1="110" x2="210" y2="165" stroke="rgba(212,168,67,0.15)" stroke-width="1"/>
-            <line x1="165" y1="125" x2="230" y2="125" stroke="rgba(212,168,67,0.15)" stroke-width="1"/>
-            <line x1="165" y1="140" x2="230" y2="140" stroke="rgba(212,168,67,0.15)" stroke-width="1"/>
-            <line x1="165" y1="155" x2="230" y2="155" stroke="rgba(212,168,67,0.15)" stroke-width="1"/>
-            <!-- Hwy 11/17 -->
-            <path d="M0,135 Q80,130 160,138 Q200,141 240,136 Q320,130 400,132" stroke="rgba(212,168,67,0.25)" stroke-width="1.5" fill="none" stroke-dasharray="6,3"/>
-            <!-- Hwy 61 -->
-            <path d="M195,155 Q192,165 190,175" stroke="rgba(212,168,67,0.25)" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
-            <!-- Main dot - Thunder Bay -->
-            <circle cx="195" cy="140" r="6" fill="var(--gold)" opacity="0.9"/>
-            <circle cx="195" cy="140" r="12" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.4"/>
-            <circle cx="195" cy="140" r="20" fill="none" stroke="var(--gold)" stroke-width="0.5" opacity="0.2"/>
-            <!-- Nearby towns -->
-            <circle cx="130" cy="122" r="3" fill="rgba(212,168,67,0.5)"/>
-            <circle cx="260" cy="128" r="3" fill="rgba(212,168,67,0.5)"/>
-            <circle cx="215" cy="105" r="3" fill="rgba(212,168,67,0.5)"/>
-            <circle cx="170" cy="108" r="3" fill="rgba(212,168,67,0.5)"/>
-            <!-- Labels -->
-            <text x="195" y="128" text-anchor="middle" fill="#d4a843" font-family="Bebas Neue" font-size="10" letter-spacing="2">THUNDER BAY</text>
-            <text x="130" y="115" text-anchor="middle" fill="rgba(212,168,67,0.5)" font-family="Bebas Neue" font-size="7" letter-spacing="1">KAKABEKA</text>
-            <text x="264" y="121" text-anchor="middle" fill="rgba(212,168,67,0.5)" font-family="Bebas Neue" font-size="7" letter-spacing="1">SHUNIAH</text>
-            <text x="215" y="99" text-anchor="middle" fill="rgba(212,168,67,0.5)" font-family="Bebas Neue" font-size="7" letter-spacing="1">OLIVER PAIPOONGE</text>
-            <!-- Service radius ring -->
-            <circle cx="195" cy="140" r="65" fill="none" stroke="rgba(212,168,67,0.1)" stroke-width="1" stroke-dasharray="3,5"/>
-            <!-- HWY label -->
-            <text x="310" y="127" fill="rgba(212,168,67,0.3)" font-family="Bebas Neue" font-size="8" letter-spacing="1">HWY 11/17</text>
-          </svg>
-        </div>
-      </div>
-      <div class="reveal">
-        <p style="font-size:15px;color:var(--ash);line-height:1.75;font-weight:300;">We provide services throughout Thunder Bay and all surrounding municipalities within approximately 60 km.</p>
-        <div class="area-list">
-          <div class="area-item">Thunder Bay North</div>
-          <div class="area-item">Thunder Bay South</div>
-          <div class="area-item">Current River</div>
-          <div class="area-item">Westfort</div>
-          <div class="area-item">Intercity</div>
-          <div class="area-item">Kakabeka Falls</div>
-          <div class="area-item">Oliver Paipoonge</div>
-          <div class="area-item">Shuniah</div>
-          <div class="area-item">Neebing</div>
-          <div class="area-item">Fort William First Nation</div>
-          <div class="area-item">Murillo</div>
-          <div class="area-item">Lappe</div>
-        </div>
-        <p class="area-note">Not sure if we cover your area? Give us a call — we're happy to travel a bit further for bigger projects.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-section">
+<div class="cta-band">
   <div class="cta-inner">
-    <div>
-      <h2 class="cta-title">Ready to Get<br>Your Project Done?</h2>
-      <p class="cta-sub">Get a free, no-obligation quote from Thunder Bay's most trusted handyman team. Fast response, fair pricing.</p>
-    </div>
-    <div class="cta-actions">
-      <a href="#contact" class="btn-dark">Request a Free Quote</a>
-      <a href="tel:8071234567" class="cta-phone">
-        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.25 1.03l-2.2 2.2z" fill="currentColor"/></svg>
-        (807) 123-4567
-      </a>
-    </div>
+    <div class="cta-txt"><h2>Ready to Get<br>Started?</h2><p>Contact VP Contracting today for a free, no-obligation estimate.</p></div>
+    <div class="cta-acts"><a href="#contact" class="btn-dark">Request Free Quote</a><div class="cta-phone">📞 (807) 555-0198</div></div>
   </div>
 </div>
 
-<!-- Contact -->
-<section id="contact" class="contact-section">
-  <div class="contact-inner">
-    <div class="contact-info">
-      <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Get in Touch</span></div>
-      <h2 class="section-title reveal">Let's Talk<br><span>About Your</span><br>Project.</h2>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">📞</div>
-        <div>
-          <div class="contact-detail-label">Phone & Text</div>
-          <div class="contact-detail-value">(807) 123-4567</div>
-        </div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">✉️</div>
-        <div>
-          <div class="contact-detail-label">Email</div>
-          <div class="contact-detail-value">info@vpcontracting.ca</div>
-        </div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">📍</div>
-        <div>
-          <div class="contact-detail-label">Location</div>
-          <div class="contact-detail-value">Thunder Bay, Ontario<br>Serving all surrounding areas</div>
-        </div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">🕐</div>
-        <div>
-          <div class="contact-detail-label">Hours</div>
-          <div class="contact-detail-value">Mon–Fri: 7am – 6pm<br>Sat: 8am – 4pm<br>Emergency calls available</div>
+<section id="contact">
+  <div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-text">Get In Touch</span></div>
+  <h2 class="sec-title reveal">Let's Talk About<br>Your Project</h2>
+  <div class="contact-layout">
+    <div class="contact-info reveal">
+      <div class="contact-item"><div class="ci-icon">📞</div><div><h4>Phone / Text</h4><a href="tel:8075550198">(807) 555-0198</a></div></div>
+      <div class="contact-item"><div class="ci-icon">📧</div><div><h4>Email</h4><a href="mailto:info@vpcontracting.ca">info@vpcontracting.ca</a></div></div>
+      <div class="contact-item"><div class="ci-icon">📍</div><div><h4>Based In</h4><p>Thunder Bay, Ontario<br>Serving the entire region</p></div></div>
+      <div class="contact-item"><div class="ci-icon">🕐</div><div><h4>Hours</h4><p>Mon–Fri: 7:00 AM – 7:00 PM<br>Sat: 8:00 AM – 5:00 PM<br>Emergency service available</p></div></div>
+      <div class="svc-areas">
+        <div class="areas-label">Service Areas</div>
+        <div class="areas-list">
+          <span class="area-tag">Thunder Bay</span><span class="area-tag">Current River</span><span class="area-tag">Westfort</span><span class="area-tag">Intercity</span><span class="area-tag">Port Arthur</span><span class="area-tag">Fort William</span><span class="area-tag">Neebing</span><span class="area-tag">Oliver Paipoonge</span><span class="area-tag">Shuniah</span><span class="area-tag">Murillo</span>
         </div>
       </div>
     </div>
-    <div class="contact-form reveal">
+    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
       <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">First Name</label>
-          <input type="text" class="form-input" placeholder="John">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Last Name</label>
-          <input type="text" class="form-input" placeholder="Smith">
-        </div>
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Phone</label>
-          <input type="tel" class="form-input" placeholder="(807) 000-0000">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-input" placeholder="john@email.com">
-        </div>
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="(807) 000-0000"></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com"></div>
       </div>
       <div class="form-group">
-        <label class="form-label">Service Needed</label>
-        <select class="form-select">
-          <option value="">Select a service...</option>
-          <option>Plumbing Repairs</option>
-          <option>Drywall & Painting</option>
-          <option>Carpentry & Trim</option>
-          <option>Electrical (Minor)</option>
-          <option>Flooring</option>
-          <option>Decks & Fencing</option>
-          <option>Seasonal Maintenance</option>
-          <option>Doors & Windows</option>
-          <option>Bathroom & Kitchen</option>
-          <option>General Handyman</option>
-          <option>Other</option>
-        </select>
+        <label>Service Needed</label>
+        <select><option value="" disabled selected>Select a service...</option><option>Plumbing Repairs</option><option>Electrical Work</option><option>Carpentry</option><option>Painting</option><option>Windows &amp; Doors</option><option>Roofing &amp; Eavestroughs</option><option>Bathroom &amp; Kitchen</option><option>Seasonal Maintenance</option><option>Drywall &amp; Plastering</option><option>Flooring</option><option>Outdoor &amp; Landscaping</option><option>General Handyman</option><option>Other / Multiple Services</option></select>
       </div>
-      <div class="form-group">
-        <label class="form-label">Describe Your Project</label>
-        <textarea class="form-textarea" placeholder="Tell us about the work you need done, your timeline, and any other details..."></textarea>
-      </div>
-      <button class="form-submit" onclick="handleSubmit(this)">Send My Request →</button>
-    </div>
+      <div class="form-group"><label>Describe Your Project</label><textarea placeholder="Tell us about your project, the issue you're experiencing, or any details that will help us provide an accurate estimate..."></textarea></div>
+      <button type="submit" class="form-submit">Send My Request →</button>
+    </form>
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#" class="logo">
-          <div class="logo-badge"><span>VP</span></div>
-          <div class="logo-text">
-            <span class="logo-name">VP Contracting</span>
-            <span class="logo-tagline">Thunder Bay, Ontario</span>
-          </div>
-        </a>
-        <p>Thunder Bay's go-to handyman and maintenance service. Professional, honest, and locally owned since day one.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="#services">Plumbing Repairs</a></li>
-          <li><a href="#services">Drywall & Painting</a></li>
-          <li><a href="#services">Carpentry & Trim</a></li>
-          <li><a href="#services">Flooring</a></li>
-          <li><a href="#services">Decks & Fencing</a></li>
-          <li><a href="#services">Seasonal Services</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Company</div>
-        <ul class="footer-links">
-          <li><a href="#why-us">Why VP Contracting</a></li>
-          <li><a href="#process">Our Process</a></li>
-          <li><a href="#area">Service Area</a></li>
-          <li><a href="#contact">Get a Quote</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Contact</div>
-        <ul class="footer-links">
-          <li><a href="tel:8071234567">(807) 123-4567</a></li>
-          <li><a href="mailto:info@vpcontracting.ca">info@vpcontracting.ca</a></li>
-          <li><a href="#area">Thunder Bay, ON</a></li>
-          <li><a href="#contact">Request a Quote</a></li>
-        </ul>
-      </div>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo"><div class="logo-badge"><span>VP</span></div><div class="logo-text"><span class="company">VP Contracting</span><span class="tagline">Thunder Bay, Ontario</span></div></div>
+      <p>Thunder Bay's trusted handyman and maintenance experts. Proudly serving our community with reliable, professional service since 2014.</p>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2026 VP Contracting. All rights reserved. Thunder Bay, Ontario.</p>
-      <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
-    </div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">Plumbing</a></li><li><a href="#services">Electrical</a></li><li><a href="#services">Carpentry</a></li><li><a href="#services">Painting</a></li><li><a href="#services">Flooring</a></li><li><a href="#services">Roofing</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#why">About VP</a></li><li><a href="#process">Our Process</a></li><li><a href="#testi">Reviews</a></li><li><a href="#contact">Contact</a></li><li><a href="#contact">Get a Quote</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:8075550198">(807) 555-0198</a></li><li><a href="mailto:info@vpcontracting.ca">info@vpcontracting.ca</a></li><li><a href="#contact">Thunder Bay, ON</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 <strong>VP Contracting</strong>. All rights reserved. Thunder Bay, Ontario.</p>
+    <div class="foot-badge"><div class="dot"></div>Accepting New Clients</div>
   </div>
 </footer>
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let cx = 0, cy = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => {
-    cx = e.clientX; cy = e.clientY;
-    cursor.style.left = cx + 'px';
-    cursor.style.top = cy + 'px';
-  });
-  function animateRing() {
-    rx += (cx - rx) * 0.12;
-    ry += (cy - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  // Nav scroll
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => obs.observe(el));
-
-  // Form submit
-  function handleSubmit(btn) {
-    btn.textContent = '✓ Message Sent! We\'ll be in touch soon.';
-    btn.style.background = '#2ecc71';
-    btn.style.color = '#fff';
-    btn.disabled = true;
-  }
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  const nav=document.querySelector('nav');
+  window.addEventListener('scroll',()=>{nav.style.background=window.scrollY>60?'rgba(10,22,40,.98)':'rgba(10,22,40,.92)';});
+  function handleSubmit(e){e.preventDefault();const btn=e.target.querySelector('.form-submit');btn.textContent='✓ Request Sent!';btn.style.background='#4ecb8d';btn.style.color='#0a1628';setTimeout(()=>{btn.textContent='Send My Request →';btn.style.background='';btn.style.color='';e.target.reset();},3000);}
 </script>
 </body>
 </html>
