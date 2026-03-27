@@ -3,392 +3,827 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VP Contracting | Thunder Bay's Trusted Handyman & Maintenance Experts</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>VP Contracting — Thunder Bay</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#0a1628;--navy-mid:#132040;--gold:#e8a020;--gold-light:#f5c55a;--slate:#2a3a52;--offwhite:#f4f1eb;--warm-gray:#9a9186;--light-gray:#d8d3cb;--text-body:#e8e4dc;}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--text-body);overflow-x:hidden}
-  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,160,32,.15);transition:all .3s}
-  .nav-logo{display:flex;align-items:center;gap:14px}
-  .logo-badge{width:46px;height:46px;background:var(--gold);display:flex;align-items:center;justify-content:center;clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);flex-shrink:0}
-  .logo-badge span{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--navy);letter-spacing:1px}
-  .logo-text{display:flex;flex-direction:column;line-height:1}
-  .logo-text .company{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--offwhite);letter-spacing:2px}
-  .logo-text .tagline{font-size:10px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:600}
-  .nav-links{display:flex;gap:36px;list-style:none}
-  .nav-links a{color:var(--light-gray);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;transition:color .2s;position:relative}
-  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-  .nav-links a:hover{color:var(--gold)}
-  .nav-links a:hover::after{transform:scaleX(1)}
-  .nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:10px 24px;font-weight:700!important;letter-spacing:1.5px!important;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
-  .nav-cta:hover{background:var(--gold-light)!important}
-  .nav-cta::after{display:none!important}
-  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;padding-top:82px}
-  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(232,160,32,.06) 0%,transparent 60%),linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%)}
-  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,160,32,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,.04) 1px,transparent 1px);background-size:60px 60px}
-  .hero-diag{position:absolute;top:0;right:40%;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);transform:skewX(-8deg);opacity:.3}
-  .hero-left{position:relative;z-index:2;padding:80px 60px 80px 80px;display:flex;flex-direction:column;justify-content:center}
-  .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px;animation:fsu .7s ease both}
-  .eyebrow-line{width:40px;height:2px;background:var(--gold)}
-  .eyebrow-text{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
-  .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,7vw,110px);line-height:.92;letter-spacing:2px;color:var(--offwhite);margin-bottom:30px;animation:fsu .7s .15s ease both}
-  .hero-title .hl{color:var(--gold);display:block}
-  .hero-desc{font-size:17px;line-height:1.7;color:var(--warm-gray);font-weight:300;max-width:460px;margin-bottom:44px;animation:fsu .7s .3s ease both}
-  .hero-desc strong{color:var(--offwhite);font-weight:500}
-  .hero-actions{display:flex;gap:16px;align-items:center;animation:fsu .7s .45s ease both}
-  .btn-primary{background:var(--gold);color:var(--navy);padding:16px 36px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:background .2s,transform .2s;display:inline-block}
-  .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
-  .btn-ghost{color:var(--offwhite);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:8px;transition:color .2s}
-  .btn-ghost:hover{color:var(--gold)}
-  .btn-ghost .arr{width:28px;height:28px;border:1px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;transition:transform .2s}
-  .btn-ghost:hover .arr{transform:translateX(4px)}
-  .hero-stats{display:flex;gap:40px;margin-top:64px;padding-top:40px;border-top:1px solid rgba(232,160,32,.15);animation:fsu .7s .6s ease both}
-  .stat-item{display:flex;flex-direction:column}
-  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--gold);line-height:1}
-  .stat-label{font-size:11px;color:var(--warm-gray);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-top:4px}
-  .hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:40px}
-  .hero-visual{position:relative;width:100%;max-width:460px;animation:fsu .9s .2s ease both}
-  .hero-card{background:var(--slate);border:1px solid rgba(232,160,32,.2);padding:36px;position:relative;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px))}
-  .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
-  .icon-row{display:flex;gap:14px;margin-bottom:24px}
-  .icon-mini{width:42px;height:42px;background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-  .card-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--offwhite);letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
-  .card-sub{font-size:13px;color:var(--warm-gray);line-height:1.5;margin-bottom:22px}
-  .avail-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,180,100,.12);border:1px solid rgba(0,180,100,.3);padding:8px 14px;font-size:12px;font-weight:600;color:#4ecb8d;letter-spacing:1px;text-transform:uppercase}
-  .avail-dot{width:7px;height:7px;border-radius:50%;background:#4ecb8d;animation:pg 2s infinite}
-  @keyframes pg{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-  .float-badge{position:absolute;background:var(--gold);color:var(--navy);padding:12px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
-  .fb-tr{top:-20px;right:24px;clip-path:polygon(0 0,100% 0,100% 100%,10px 100%);animation:fl 3s ease-in-out infinite}
-  .fb-bl{bottom:-20px;left:24px;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 100%,0 100%);animation:fl 3s 1.5s ease-in-out infinite}
-  @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-  .trust-bar{background:var(--gold);padding:16px 80px;display:flex;align-items:center;justify-content:space-between;overflow:hidden}
-  .trust-item{display:flex;align-items:center;gap:10px;color:var(--navy);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
-  .trust-sep{width:4px;height:4px;background:#0a1628;opacity:.4;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);flex-shrink:0}
-  section{padding:100px 80px}
-  .sec-label{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-  .sec-label-line{width:30px;height:2px;background:var(--gold)}
-  .sec-label-text{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
-  .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5vw,72px);line-height:1;letter-spacing:2px;color:var(--offwhite)}
-  #services{background:var(--navy-mid);position:relative;overflow:hidden}
-  #services::before{content:'';position:absolute;top:0;right:0;width:400px;height:400px;background:radial-gradient(circle,rgba(232,160,32,.05) 0%,transparent 70%)}
-  .svc-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
-  .svc-header-r{max-width:340px;text-align:right}
-  .svc-header-r p{font-size:15px;color:var(--warm-gray);line-height:1.7;font-weight:300}
-  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-  .svc-card{background:var(--navy);padding:36px 28px;position:relative;overflow:hidden;cursor:default;transition:transform .3s;border-top:3px solid transparent}
-  .svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,160,32,.04) 0%,transparent 60%);opacity:0;transition:opacity .3s}
-  .svc-card:hover{transform:translateY(-6px);border-top-color:var(--gold)}
-  .svc-card:hover::before{opacity:1}
-  .svc-card:hover .svc-num{color:var(--gold)}
-  .svc-num{font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(232,160,32,.08);line-height:1;transition:color .3s;margin-bottom:16px;display:block}
-  .svc-emoji{font-size:32px;margin-bottom:16px;display:block}
-  .svc-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--offwhite);margin-bottom:10px}
-  .svc-desc{font-size:13px;color:var(--warm-gray);line-height:1.6;font-weight:300}
-  .svc-arrow{position:absolute;bottom:28px;right:28px;color:var(--gold);font-size:20px;opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s}
-  .svc-card:hover .svc-arrow{opacity:1;transform:translateX(0)}
-  #why{background:var(--navy)}
-  .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-  .why-vis{position:relative}
-  .why-shape{width:100%;padding-bottom:100%;background:var(--slate);clip-path:polygon(0 0,100% 0,100% 85%,85% 100%,0 100%);position:relative;overflow:hidden}
-  .why-shape::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(232,160,32,.03) 0px,rgba(232,160,32,.03) 1px,transparent 1px,transparent 20px)}
-  .why-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-  .why-icon{font-size:72px;display:block;margin-bottom:8px;filter:drop-shadow(0 0 20px rgba(232,160,32,.3))}
-  .why-txt{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);letter-spacing:3px}
-  .why-corners{position:absolute;top:0;bottom:0;left:0;right:0;pointer-events:none}
-  .cb{position:absolute;background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 16px}
-  .cb.tl{top:20px;left:20px;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
-  .cb.br{bottom:30px;right:20px;clip-path:polygon(8px 0,100% 0,100% 100%,0 100%)}
-  .why-feats{display:flex;flex-direction:column;gap:32px}
-  .feat{display:flex;gap:20px;align-items:flex-start;padding-bottom:32px;border-bottom:1px solid rgba(232,160,32,.08)}
-  .feat:last-child{border-bottom:none;padding-bottom:0}
-  .feat-icon{width:50px;height:50px;flex-shrink:0;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.2);display:flex;align-items:center;justify-content:center;font-size:22px;position:relative}
-  .feat-icon::after{content:'';position:absolute;top:-1px;left:-1px;width:12px;height:12px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
-  .feat-txt h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--offwhite);margin-bottom:6px}
-  .feat-txt p{font-size:14px;color:var(--warm-gray);line-height:1.6;font-weight:300}
-  #process{background:var(--navy-mid);text-align:center}
-  #process .sec-label{justify-content:center}
-  .proc-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin-top:60px}
-  .proc-steps::before{content:'';position:absolute;top:35px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold),transparent);opacity:.3}
-  .proc-step{padding:0 24px}
-  .step-circ{width:70px;height:70px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px;position:relative;background:var(--navy)}
-  .step-circ::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(232,160,32,.2)}
-  .step-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);line-height:1}
-  .step-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--offwhite);margin-bottom:12px}
-  .step-desc{font-size:13px;color:var(--warm-gray);line-height:1.6;font-weight:300}
-  #testi{background:var(--navy)}
-  .testi-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
-  .stars{color:var(--gold);font-size:18px;letter-spacing:2px}
-  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .testi-card{background:var(--navy-mid);padding:36px;border:1px solid rgba(232,160,32,.08);position:relative;transition:border-color .3s}
-  .testi-card:hover{border-color:rgba(232,160,32,.25)}
-  .testi-card::before{content:'"';position:absolute;top:16px;right:24px;font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(232,160,32,.06);line-height:1}
-  .testi-stars{color:var(--gold);font-size:14px;margin-bottom:16px}
-  .testi-txt{font-size:15px;color:var(--text-body);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:24px}
-  .testi-auth{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid rgba(232,160,32,.1)}
-  .auth-av{width:44px;height:44px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--navy);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);flex-shrink:0}
-  .auth-info .name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:1px;color:var(--offwhite)}
-  .auth-info .loc{font-size:12px;color:var(--warm-gray);margin-top:2px}
-  .cta-band{background:var(--gold);padding:80px;position:relative;overflow:hidden}
-  .cta-band::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(10,22,40,.04) 0px,rgba(10,22,40,.04) 1px,transparent 1px,transparent 24px)}
-  .cta-inner{position:relative;display:flex;justify-content:space-between;align-items:center;gap:40px}
-  .cta-txt h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,72px);color:var(--navy);line-height:1;letter-spacing:2px;margin-bottom:10px}
-  .cta-txt p{font-size:16px;color:#132040;font-weight:400}
-  .cta-acts{display:flex;flex-direction:column;gap:14px;align-items:flex-end}
-  .btn-dark{background:var(--navy);color:var(--gold);padding:18px 44px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);transition:background .2s;display:inline-block;white-space:nowrap}
-  .btn-dark:hover{background:var(--slate)}
-  .cta-phone{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--navy);letter-spacing:2px;display:flex;align-items:center;gap:10px}
-  #contact{background:var(--navy-mid)}
-  .contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;margin-top:60px}
-  .contact-info{display:flex;flex-direction:column;gap:32px}
-  .contact-item{display:flex;gap:18px;align-items:flex-start}
-  .ci-icon{width:48px;height:48px;flex-shrink:0;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.2);display:flex;align-items:center;justify-content:center;font-size:20px}
-  .contact-item h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-  .contact-item p,.contact-item a{font-size:16px;color:var(--offwhite);text-decoration:none;line-height:1.5}
-  .contact-item a:hover{color:var(--gold)}
-  .svc-areas{margin-top:40px;padding:28px;border:1px solid rgba(232,160,32,.15);background:rgba(232,160,32,.03)}
-  .areas-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-  .areas-list{display:flex;flex-wrap:wrap;gap:8px}
-  .area-tag{background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.15);color:var(--light-gray);font-size:12px;padding:5px 12px;letter-spacing:1px;font-weight:500}
-  .contact-form{display:flex;flex-direction:column;gap:18px}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  .form-group{display:flex;flex-direction:column;gap:8px}
-  .form-group label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
-  .form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.04);border:1px solid rgba(232,160,32,.15);color:var(--offwhite);padding:14px 18px;font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color .2s;width:100%;appearance:none}
-  .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(154,145,134,.5)}
-  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
-  .form-group select option{background:var(--navy-mid);color:var(--offwhite)}
-  .form-group textarea{resize:vertical;min-height:120px}
-  .form-submit{background:var(--gold);color:var(--navy);border:none;padding:18px 40px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:background .2s,transform .2s;align-self:flex-start}
-  .form-submit:hover{background:var(--gold-light);transform:translateY(-2px)}
-  footer{background:var(--navy);border-top:1px solid rgba(232,160,32,.1);padding:60px 80px 30px}
-  .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:48px}
-  .footer-brand p{font-size:14px;color:var(--warm-gray);line-height:1.7;font-weight:300;margin-top:16px;max-width:280px}
-  .footer-col h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
-  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-  .footer-col ul li a{color:var(--warm-gray);text-decoration:none;font-size:13px;transition:color .2s;display:flex;align-items:center;gap:6px}
-  .footer-col ul li a:hover{color:var(--gold)}
-  .footer-col ul li a::before{content:'—';color:rgba(232,160,32,.3);font-size:10px}
-  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid rgba(232,160,32,.08)}
-  .footer-bottom p{font-size:12px;color:var(--warm-gray);letter-spacing:1px}
-  .footer-bottom strong{color:var(--gold)}
-  .foot-badge{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--warm-gray)}
-  .foot-badge .dot{width:6px;height:6px;border-radius:50%;background:#4ecb8d;animation:pg 2s infinite}
-  @keyframes fsu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
-  .reveal.visible{opacity:1;transform:translateY(0)}
-  @media(max-width:900px){
-    nav{padding:14px 24px}
-    .nav-links{display:none}
-    section{padding:64px 24px}
-    .hero{grid-template-columns:1fr}
-    .hero-right{display:none}
-    .hero-left{padding:40px 24px}
-    .svc-grid{grid-template-columns:1fr 1fr}
-    .svc-header{flex-direction:column;gap:20px}
-    .svc-header-r{text-align:left;max-width:100%}
-    .why-layout{grid-template-columns:1fr}
-    .why-vis{display:none}
-    .proc-steps{grid-template-columns:1fr 1fr}
-    .proc-steps::before{display:none}
-    .testi-grid{grid-template-columns:1fr}
-    .cta-inner{flex-direction:column;text-align:center}
-    .cta-acts{align-items:center}
-    .contact-layout{grid-template-columns:1fr}
-    .form-row{grid-template-columns:1fr}
-    .footer-top{grid-template-columns:1fr 1fr;gap:40px}
-    .trust-bar{padding:12px 24px;flex-wrap:wrap;gap:12px}
-    .cta-band{padding:40px 24px}
-    .footer-bottom{flex-direction:column;gap:12px;text-align:center}
-    .hero-stats{flex-wrap:wrap;gap:24px}
-  }
+/* ── RESET ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;font-weight:400;background:#f0f5fb;color:#0d1f3c;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── BRAND TOKENS ──────────────────────── */
+:root{
+  --navy:    #0d1f3c;
+  --navy2:   #1a3560;
+  --blue:    #2d6db4;
+  --sky:     #7eb5e8;
+  --sky-lt:  #a8c4e0;
+  --white:   #ffffff;
+  --frost:   #f0f5fb;
+  --frost2:  #e4edf8;
+  --muted:   #8a94a6;
+  --body-txt:#4a5568;
+  --rule:    #dde2ec;
+  --display: 'Barlow Condensed',sans-serif;
+  --body:    'Lato',sans-serif;
+  --pad:     clamp(20px,5vw,80px);
+  --max:     1280px;
+}
+
+/* ── LOGO SVG (inline reuse) ───────────── */
+.logo-mark-light rect{fill:var(--navy)}
+.logo-mark-light .tri-out{stroke:var(--blue)}
+.logo-mark-light .tri-in{fill:var(--blue)}
+.logo-mark-light .base{stroke:var(--sky)}
+.logo-mark-dark rect{fill:var(--navy2)}
+.logo-mark-dark .tri-out{stroke:var(--sky)}
+.logo-mark-dark .tri-in{fill:var(--sky)}
+.logo-mark-dark .base{stroke:#fff}
+
+/* ── NAV ───────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(13,31,60,0.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(126,181,232,0.12);
+}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;padding:0 var(--pad);
+  display:flex;align-items:center;justify-content:space-between;
+  height:68px;
+}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-txt{display:flex;flex-direction:column;line-height:1}
+.nav-logo-name{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:0.04em;color:#fff}
+.nav-logo-sub{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--sky);margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;color:var(--sky-lt);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta a{
+  background:var(--blue);color:#fff !important;
+  padding:9px 22px;letter-spacing:0.1em !important;
+  transition:background .2s !important;
+}
+.nav-cta a:hover{background:#1a4e8a !important}
+
+/* ── HERO ──────────────────────────────── */
+.hero{
+  padding-top:68px;
+  display:grid;grid-template-rows:1fr auto;
+  min-height:100svh;
+  background:var(--navy);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:calc(100svh - 68px - 72px);
+}
+.hero-left{
+  padding:clamp(48px,8vw,120px) var(--pad) clamp(48px,6vw,80px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  border-right:1px solid rgba(126,181,232,0.1);
+  position:relative;
+}
+/* blue accent top bar */
+.hero-left::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue) 0%,var(--sky) 100%)}
+
+.hero-eyebrow{
+  font-size:10.5px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--sky);margin-bottom:22px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:2px;background:var(--blue)}
+
+.hero-h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(52px,7vw,100px);line-height:0.95;letter-spacing:0.02em;
+  color:#fff;margin-bottom:28px;text-transform:uppercase;
+}
+.hero-h1 span{color:var(--sky)}
+
+.hero-body{
+  font-size:clamp(14px,1.3vw,16px);font-weight:300;line-height:1.8;
+  color:var(--sky-lt);max-width:420px;margin-bottom:44px;
+}
+.hero-body strong{color:#fff;font-weight:700}
+
+.hero-actions{display:flex;align-items:center;gap:24px}
+.btn-blue{
+  display:inline-block;padding:13px 32px;
+  background:var(--blue);color:#fff;
+  font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  text-decoration:none;transition:background .25s;
+}
+.btn-blue:hover{background:#1a4e8a}
+.link-ghost{
+  font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--sky);text-decoration:none;
+  display:flex;align-items:center;gap:7px;
+  border-bottom:1px solid rgba(126,181,232,0.3);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.link-ghost:hover{color:#fff;border-color:#fff}
+.link-ghost svg{width:13px;height:13px;transition:transform .2s}
+.link-ghost:hover svg{transform:translateX(3px)}
+
+/* hero right — full bleed image */
+.hero-right{position:relative;overflow:hidden}
+.hero-img{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&fit=crop');
+  background-size:cover;background-position:center;
+}
+.hero-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(13,31,60,0.6) 0%,rgba(13,31,60,0.15) 100%);
+}
+.hero-stats{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:36px var(--pad);
+  display:flex;gap:36px;
+  background:linear-gradient(to top,rgba(13,31,60,0.85) 0%,transparent 100%);
+}
+.stat-b{display:flex;flex-direction:column;gap:2px}
+.stat-n{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.5vw,48px);color:#fff;line-height:1;letter-spacing:0.02em}
+.stat-n span{color:var(--sky)}
+.stat-l{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--sky-lt)}
+
+/* ticker */
+.hero-ticker{
+  border-top:1px solid rgba(126,181,232,0.12);
+  display:grid;grid-template-columns:repeat(5,1fr);height:72px;
+}
+.ticker-cell{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  border-right:1px solid rgba(126,181,232,0.1);
+  font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--sky-lt);padding:0 12px;text-align:center;white-space:nowrap;
+}
+.ticker-cell:last-child{border-right:none}
+.tick-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+/* ── SECTION SHARED ────────────────────── */
+.sec-eyebrow{
+  font-size:10.5px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:14px;display:flex;align-items:center;gap:12px;
+}
+.sec-eyebrow::before{content:'';display:block;width:24px;height:2px;background:var(--blue)}
+.sec-h2{
+  font-family:var(--display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(30px,3.8vw,54px);line-height:1.0;letter-spacing:0.02em;color:var(--navy);
+}
+.sec-h2 span{color:var(--blue)}
+.sec-h2-inv{color:#fff}
+.sec-h2-inv span{color:var(--sky)}
+
+/* ── SERVICES ──────────────────────────── */
+#services{background:#fff;border-top:3px solid var(--blue)}
+.svc-masthead{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--rule);
+}
+.svc-mast-left{
+  padding:clamp(48px,7vw,96px) var(--pad);
+  border-right:1px solid var(--rule);
+}
+.svc-mast-left .sec-h2{margin-bottom:16px}
+.svc-intro{font-size:15px;font-weight:300;line-height:1.8;color:var(--body-txt);margin-top:20px;max-width:380px}
+.svc-mast-right{position:relative;overflow:hidden;min-height:380px}
+.svc-mast-img{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=85&fit=crop');
+  background-size:cover;background-position:center;
+}
+.svc-mast-img-ov{position:absolute;inset:0;background:rgba(13,31,60,0.25)}
+.svc-mast-cap{
+  position:absolute;bottom:24px;left:var(--pad);
+  font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.7);
+}
+
+.svc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-left:1px solid var(--rule);
+}
+.svc{
+  padding:36px clamp(16px,2.5vw,36px);
+  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  position:relative;overflow:hidden;transition:background .25s;
+}
+.svc:hover{background:var(--frost)}
+.svc-num{font-family:var(--display);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:0.06em;margin-bottom:20px;display:block}
+.svc-name{font-family:var(--display);font-size:clamp(17px,1.6vw,22px);font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.svc-desc{font-size:13px;font-weight:300;line-height:1.7;color:var(--body-txt)}
+.svc-bar{position:absolute;bottom:0;left:0;height:3px;width:0;background:var(--blue);transition:width .35s ease}
+.svc:hover .svc-bar{width:100%}
+.svc-quote{
+  background:var(--navy);
+  padding:36px clamp(16px,2.5vw,36px);
+  border-right:1px solid rgba(126,181,232,0.1);border-bottom:1px solid rgba(126,181,232,0.1);
+  display:flex;align-items:flex-end;
+}
+.svc-quote p{font-family:var(--display);font-size:clamp(16px,1.6vw,22px);font-style:italic;font-weight:600;color:var(--sky);line-height:1.4;letter-spacing:0.02em}
+
+/* ── IMAGE STRIP ───────────────────────── */
+.img-strip{display:grid;grid-template-columns:repeat(3,1fr);height:clamp(200px,26vw,380px);border-top:1px solid var(--rule)}
+.strip-img{background-size:cover;background-position:center;border-right:1px solid var(--rule);position:relative;overflow:hidden}
+.strip-img:last-child{border-right:none}
+.strip-ov{position:absolute;inset:0;background:rgba(13,31,60,0.25);transition:background .35s}
+.strip-img:hover .strip-ov{background:rgba(13,31,60,0.05)}
+.strip-cap{position:absolute;bottom:18px;left:20px;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.75)}
+
+/* ── WHY ───────────────────────────────── */
+#why{background:var(--navy)}
+.why-split{display:grid;grid-template-columns:1fr 1fr}
+.why-img-side{position:relative;overflow:hidden;min-height:560px}
+.why-img{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=85&fit=crop');
+  background-size:cover;background-position:center;
+}
+.why-img-ov{position:absolute;inset:0;background:rgba(13,31,60,0.4)}
+.why-quote-badge{
+  position:absolute;bottom:40px;left:36px;right:36px;
+  background:var(--blue);
+  padding:22px 26px;
+  border-left:4px solid var(--sky);
+}
+.why-quote-badge p{font-family:var(--display);font-size:18px;font-weight:700;color:#fff;line-height:1.35;letter-spacing:0.02em}
+.why-quote-badge span{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--sky)}
+
+.why-content{
+  padding:clamp(48px,7vw,96px) var(--pad);
+  display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid rgba(126,181,232,0.08);
+}
+.why-content .sec-eyebrow{color:var(--sky)}
+.why-content .sec-eyebrow::before{background:var(--sky)}
+.why-content .sec-h2{color:#fff;margin-bottom:44px}
+.why-content .sec-h2 span{color:var(--sky)}
+
+.feat{
+  display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:start;
+  padding:26px 0;border-bottom:1px solid rgba(126,181,232,0.08);
+}
+.feat:first-of-type{border-top:1px solid rgba(126,181,232,0.08)}
+.feat-idx{font-family:var(--display);font-size:13px;font-weight:700;color:var(--sky);padding-top:2px;letter-spacing:0.04em}
+.feat h3{font-family:var(--display);font-size:19px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:#fff;margin-bottom:7px}
+.feat p{font-size:13px;font-weight:300;line-height:1.75;color:var(--sky-lt)}
+
+/* ── SHOWCASE ──────────────────────────── */
+#showcase{background:var(--frost);border-top:1px solid var(--rule)}
+.showcase-head{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--rule);
+}
+.showcase-head-left{
+  padding:clamp(48px,7vw,96px) var(--pad);
+  border-right:1px solid var(--rule);
+}
+.showcase-head-right{
+  padding:clamp(48px,7vw,96px) var(--pad);
+  display:flex;align-items:flex-end;
+}
+.showcase-head-right p{font-size:15px;font-weight:300;line-height:1.8;color:var(--body-txt);max-width:360px}
+
+.showcase-grid{display:grid;grid-template-columns:repeat(2,1fr)}
+.proj{
+  position:relative;overflow:hidden;
+  height:clamp(260px,32vw,480px);
+  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+}
+.proj:nth-child(2n){border-right:none}
+.proj.wide{grid-column:1/-1;border-right:none;height:clamp(280px,36vw,520px)}
+.proj-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .65s ease}
+.proj:hover .proj-img{transform:scale(1.04)}
+.proj-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.82) 0%,rgba(13,31,60,0.1) 55%)}
+.proj-info{position:absolute;bottom:0;left:0;right:0;padding:28px clamp(18px,2.5vw,36px)}
+.proj-tag{
+  display:inline-block;
+  font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+  color:#fff;background:var(--blue);padding:4px 10px;margin-bottom:10px;
+}
+.proj-title{font-family:var(--display);font-size:clamp(18px,2.2vw,28px);font-weight:700;letter-spacing:0.02em;text-transform:uppercase;color:#fff;line-height:1.1}
+
+/* ── PROCESS ───────────────────────────── */
+#process{background:#fff;border-top:1px solid var(--rule)}
+.proc-head{max-width:var(--max);margin:0 auto;padding:clamp(48px,7vw,96px) var(--pad) 0;margin-bottom:56px}
+.proc-steps{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--rule);border-left:1px solid var(--rule);
+}
+.proc-step{padding:44px clamp(16px,2.5vw,36px);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.proc-big{font-family:var(--display);font-size:56px;font-weight:700;color:rgba(13,31,60,0.06);line-height:1;margin-bottom:16px}
+.proc-bar{display:block;width:24px;height:3px;background:var(--blue);margin-bottom:14px}
+.proc-title{font-family:var(--display);font-size:19px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.proc-desc{font-size:13px;font-weight:300;line-height:1.7;color:var(--body-txt)}
+
+/* ── TESTIMONIALS ──────────────────────── */
+#testimonials{background:var(--frost);border-top:1px solid var(--rule)}
+.testi-masthead{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)}
+.testi-mast-left{padding:clamp(48px,7vw,96px) var(--pad);border-right:1px solid var(--rule)}
+.testi-mast-right{position:relative;overflow:hidden;min-height:300px}
+.testi-mast-img{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&fit=crop&crop=top');
+  background-size:cover;background-position:center top;
+}
+.testi-mast-ov{position:absolute;inset:0;background:rgba(13,31,60,0.3)}
+
+.rating-strip{
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px var(--pad);gap:20px;border-bottom:none;
+}
+.rating-big{font-family:var(--display);font-size:36px;font-weight:700;color:#fff;letter-spacing:0.02em}
+.rating-label{font-size:10.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--sky-lt)}
+.rating-stars{display:flex;gap:4px}
+.rstar{width:16px;height:16px;fill:var(--sky)}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:#3AAF6A;animation:pg 2s ease-in-out infinite;display:inline-block}
+@keyframes pg{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(58,175,106,.5)}50%{opacity:.7;box-shadow:0 0 0 5px rgba(58,175,106,0)}}
+
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.testi-card{
+  background:#fff;
+  padding:clamp(28px,3.5vw,48px);
+  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+}
+.testi-card:nth-child(3n){border-right:none}
+.testi-stars{display:flex;gap:3px;margin-bottom:16px}
+.tstar{width:13px;height:13px;fill:var(--blue)}
+.testi-q{font-family:var(--display);font-size:52px;font-weight:700;color:rgba(45,109,180,0.15);line-height:1;margin-bottom:12px}
+.testi-text{font-size:clamp(13px,1.2vw,15px);font-weight:300;line-height:1.75;color:var(--body-txt);margin-bottom:24px;font-style:italic}
+.testi-name{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--navy)}
+.testi-loc{font-size:10.5px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
+/* ── CTA ───────────────────────────────── */
+.cta-band{
+  background:var(--navy);
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:3px solid var(--blue);
+}
+.cta-left{padding:clamp(60px,9vw,120px) var(--pad);border-right:1px solid rgba(126,181,232,0.08)}
+.cta-left .sec-eyebrow{color:var(--sky)}
+.cta-left .sec-eyebrow::before{background:var(--sky)}
+.cta-h{font-family:var(--display);font-size:clamp(36px,5vw,72px);font-weight:700;color:#fff;line-height:0.96;letter-spacing:0.02em;text-transform:uppercase;margin-top:12px}
+.cta-h span{color:var(--sky)}
+.cta-right{padding:clamp(60px,9vw,120px) var(--pad);display:flex;flex-direction:column;justify-content:space-between}
+.cta-phone{font-family:var(--display);font-size:clamp(24px,3.5vw,44px);font-weight:700;color:var(--sky);letter-spacing:0.02em;margin-bottom:6px}
+.cta-phone-lbl{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(126,181,232,0.5)}
+.btn-white{
+  display:inline-block;padding:13px 36px;align-self:flex-start;margin-top:44px;
+  background:#fff;color:var(--navy);
+  font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  text-decoration:none;transition:background .25s,color .25s;
+}
+.btn-white:hover{background:var(--blue);color:#fff}
+
+/* ── CONTACT ───────────────────────────── */
+#contact{background:#fff;border-top:1px solid var(--rule)}
+.contact-split{display:grid;grid-template-columns:1fr 1.5fr}
+.contact-left{
+  padding:clamp(48px,7vw,96px) var(--pad);
+  border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:36px;
+}
+.contact-right{padding:clamp(48px,7vw,96px) var(--pad)}
+.ci-lbl{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+.ci-val{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:0.02em;color:var(--navy);text-decoration:none;display:block}
+.ci-val:hover{color:var(--blue)}
+.ci-val-sm{font-size:14px;font-weight:300;color:var(--body-txt);line-height:1.7}
+.areas-wrap{margin-top:4px}
+.areas-lbl{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.areas-tags{display:flex;flex-wrap:wrap;gap:7px}
+.area-t{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);border:1px solid var(--rule);background:var(--frost);padding:4px 10px}
+
+/* form */
+.cform{display:flex;flex-direction:column}
+.frow{display:grid;grid-template-columns:1fr 1fr}
+.ff{
+  display:flex;flex-direction:column;position:relative;
+  border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);
+  padding:18px 0 0;
+}
+.frow .ff:last-child,.ff.full{border-right:none}
+.ff label{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);padding:0 22px}
+.ff input,.ff select,.ff textarea{
+  background:transparent;border:none;outline:none;
+  font-family:var(--body);font-size:15px;font-weight:400;color:var(--navy);
+  padding:7px 22px 18px;width:100%;appearance:none;
+}
+.ff textarea{resize:none;min-height:110px;line-height:1.6}
+.ff input::placeholder,.ff textarea::placeholder{color:rgba(13,31,60,0.2)}
+.ff select option{background:#fff}
+.ff-bar{position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.ff:focus-within .ff-bar{transform:scaleX(1)}
+.ff:focus-within label{color:var(--blue)}
+.form-foot{display:flex;align-items:center;justify-content:space-between;padding:24px 0 0;gap:16px}
+.form-foot p{font-size:12px;font-weight:300;color:var(--muted);line-height:1.6;max-width:240px}
+.btn-submit{
+  background:var(--navy);color:#fff;border:none;
+  padding:13px 36px;font-family:var(--body);font-size:11px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background .25s;
+}
+.btn-submit:hover{background:var(--blue)}
+
+/* ── FOOTER ────────────────────────────── */
+footer{background:var(--navy);border-top:3px solid var(--blue);padding:52px var(--pad) 32px}
+.footer-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-mark{font-family:var(--display);font-size:21px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#fff;margin-bottom:10px}
+.footer-brand p{font-size:13px;font-weight:300;color:var(--sky-lt);line-height:1.7;max-width:250px;margin-top:8px}
+.fcol h4{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--sky);margin-bottom:16px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fcol ul li a{font-size:13px;font-weight:300;color:var(--sky-lt);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:#fff}
+.footer-bottom{max-width:var(--max);margin:0 auto;padding-top:24px;border-top:1px solid rgba(126,181,232,0.1);display:flex;align-items:center;justify-content:space-between}
+.footer-bottom p{font-size:12px;font-weight:300;color:var(--muted)}
+.foot-badge{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--sky-lt)}
+
+/* ── REVEAL ────────────────────────────── */
+.r{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease}
+.r.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ── RESPONSIVE ────────────────────────── */
+@media(max-width:960px){
+  .hero-grid,.svc-masthead,.why-split,.showcase-head,.testi-masthead,.cta-band,.contact-split,.showcase-grid{grid-template-columns:1fr}
+  .hero-left{border-right:none;border-bottom:1px solid rgba(126,181,232,0.1)}
+  .hero-right{min-height:320px}
+  .hero-ticker{grid-template-columns:repeat(3,1fr)}
+  .hero-ticker .ticker-cell:nth-child(n+4){display:none}
+  .svc-mast-left,.testi-mast-left,.showcase-head-left{border-right:none}
+  .svc-mast-right,.testi-mast-right{min-height:240px}
+  .why-img-side{min-height:300px}
+  .why-content{border-left:none;border-top:1px solid rgba(126,181,232,0.08)}
+  .showcase-head-right,.showcase-grid .proj{border-right:none}
+  .showcase-grid .proj{height:clamp(200px,48vw,380px)}
+  .proc-steps,.svc-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .testi-card{border-right:none}
+  .cta-left{border-right:none;border-bottom:1px solid rgba(126,181,232,0.08)}
+  .contact-left{border-right:none;border-bottom:1px solid var(--rule)}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:40px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .nav-links{display:none}
+  .img-strip{height:clamp(160px,22vw,260px)}
+  .rating-strip{flex-wrap:wrap}
+}
+@media(max-width:560px){
+  .svc-grid,.proc-steps,.frow{grid-template-columns:1fr}
+  .svc:nth-child(odd){border-right:none}
+  .ff{border-right:none!important}
+  .footer-inner{grid-template-columns:1fr}
+  .hero-ticker{display:none}
+  .img-strip{grid-template-columns:1fr;height:auto}
+  .strip-img{height:180px;border-right:none;border-bottom:1px solid var(--rule)}
+}
 </style>
 </head>
 <body>
 
+<!-- ── NAV ─────────────────────────────────────── -->
 <nav>
-  <div class="nav-logo">
-    <div class="logo-badge"><span>VP</span></div>
-    <div class="logo-text">
-      <span class="company">VP Contracting</span>
-      <span class="tagline">Thunder Bay, Ontario</span>
-    </div>
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <svg width="36" height="36" viewBox="0 0 52 52" fill="none">
+        <rect width="52" height="52" rx="6" fill="#1a3560"/>
+        <polygon points="10,38 26,14 42,38" fill="none" stroke="#7eb5e8" stroke-width="3" stroke-linejoin="round"/>
+        <polygon points="18,38 26,24 34,38" fill="#7eb5e8"/>
+        <line x1="10" y1="38" x2="42" y2="38" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div class="nav-logo-txt">
+        <span class="nav-logo-name">VP CONTRACTING</span>
+        <span class="nav-logo-sub">Thunder Bay, Ontario</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">About</a></li>
+      <li><a href="#showcase">Our Work</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li class="nav-cta"><a href="#contact">Get a Quote</a></li>
+    </ul>
   </div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#testi">Reviews</a></li>
-    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
-  </ul>
 </nav>
 
+<!-- ── HERO ────────────────────────────────────── -->
 <section class="hero" id="home">
-  <div class="hero-bg"></div><div class="hero-grid"></div><div class="hero-diag"></div>
-  <div class="hero-left">
-    <div class="hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Thunder Bay's #1 Handyman Service</span></div>
-    <h1 class="hero-title">No Job<br>Too<br><span class="hl">Big Or</span><br>Small.</h1>
-    <p class="hero-desc"><strong>VP Contracting</strong> delivers expert handyman and maintenance services across Thunder Bay. From quick repairs to full renovations — reliable, skilled, and done right the first time.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Get Free Estimate</a>
-      <a href="#services" class="btn-ghost">Our Services <span class="arr">→</span></a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Jobs Completed</span></div>
-      <div class="stat-item"><span class="stat-num">10+</span><span class="stat-label">Years Experience</span></div>
-      <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Satisfaction Rate</span></div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-visual">
-      <div class="float-badge fb-tr">🏆 Licensed &amp; Insured</div>
-      <div class="hero-card">
-        <div class="icon-row"><div class="icon-mini">🔧</div><div class="icon-mini">🪟</div><div class="icon-mini">💡</div><div class="icon-mini">🚿</div></div>
-        <div class="card-title">All-In-One Maintenance</div>
-        <div class="card-sub">Plumbing · Electrical · Carpentry · Painting · Roofing · Flooring · Drywall &amp; More</div>
-        <div class="avail-badge"><span class="avail-dot"></span>Available Now — Same Day Service</div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow r">Thunder Bay Handyman &amp; Maintenance</div>
+      <h1 class="hero-h1 r d1">No Job<br>Too Big<br>or <span>Small.</span></h1>
+      <p class="hero-body r d2"><strong>VP Contracting</strong> brings expert craftsmanship to every home and business in Thunder Bay — from a single repair to a complete renovation, done right the first time.</p>
+      <div class="hero-actions r d3">
+        <a href="#contact" class="btn-blue">Get Free Estimate</a>
+        <a href="#services" class="link-ghost">Our Services
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
-      <div class="float-badge fb-bl">⭐ 5-Star Rated</div>
     </div>
+    <div class="hero-right">
+      <div class="hero-img"></div>
+      <div class="hero-img-overlay"></div>
+      <div class="hero-stats r d2">
+        <div class="stat-b"><span class="stat-n">500<span>+</span></span><span class="stat-l">Jobs Completed</span></div>
+        <div class="stat-b"><span class="stat-n">7<span>+</span></span><span class="stat-l">Years Experience</span></div>
+        <div class="stat-b"><span class="stat-n">100<span>%</span></span><span class="stat-l">Satisfaction</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-ticker">
+    <div class="ticker-cell"><span class="tick-dot"></span>Licensed &amp; Insured</div>
+    <div class="ticker-cell"><span class="tick-dot"></span>Free Estimates</div>
+    <div class="ticker-cell"><span class="tick-dot"></span>Same-Day Service</div>
+    <div class="ticker-cell"><span class="tick-dot"></span>Locally Owned</div>
+    <div class="ticker-cell"><span class="tick-dot"></span>Satisfaction Guaranteed</div>
   </div>
 </section>
 
-<div class="trust-bar">
-  <div class="trust-item">✔ Licensed &amp; Insured</div><div class="trust-sep"></div>
-  <div class="trust-item">✔ Free Estimates</div><div class="trust-sep"></div>
-  <div class="trust-item">✔ Same-Day Service Available</div><div class="trust-sep"></div>
-  <div class="trust-item">✔ Locally Owned &amp; Operated</div><div class="trust-sep"></div>
-  <div class="trust-item">✔ Satisfaction Guaranteed</div>
-</div>
-
+<!-- ── SERVICES ────────────────────────────────── -->
 <section id="services">
-  <div class="svc-header reveal">
-    <div><div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">What We Do</span></div><h2 class="sec-title">Our Services</h2></div>
-    <div class="svc-header-r"><p>From emergency repairs to planned renovations, VP Contracting handles it all with professional expertise and a commitment to quality workmanship.</p></div>
-  </div>
-  <div class="svc-grid reveal">
-    <div class="svc-card"><span class="svc-num">01</span><span class="svc-emoji">🔧</span><div class="svc-name">Plumbing Repairs</div><div class="svc-desc">Leaky faucets, pipe repairs, toilet installation, drain cleaning, and general plumbing maintenance.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">02</span><span class="svc-emoji">💡</span><div class="svc-name">Electrical Work</div><div class="svc-desc">Outlet installation, light fixtures, ceiling fans, switch replacements, and minor electrical upgrades.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">03</span><span class="svc-emoji">🪚</span><div class="svc-name">Carpentry</div><div class="svc-desc">Custom shelving, door repairs, trim work, deck maintenance, framing, and cabinet installation.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">04</span><span class="svc-emoji">🎨</span><div class="svc-name">Painting</div><div class="svc-desc">Interior and exterior painting, drywall patching, priming, and professional finishing for any room.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">05</span><span class="svc-emoji">🪟</span><div class="svc-name">Windows &amp; Doors</div><div class="svc-desc">Window installation and sealing, door repair and replacement, weatherstripping, and lock work.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">06</span><span class="svc-emoji">🏠</span><div class="svc-name">Roofing &amp; Eavestroughs</div><div class="svc-desc">Shingle repair, eavestrough cleaning, flashing repair, and minor roof patching to protect your home.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">07</span><span class="svc-emoji">🚿</span><div class="svc-name">Bathroom &amp; Kitchen</div><div class="svc-desc">Tile installation, caulking, vanity upgrades, backsplash, fixture replacement, and renovations.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">08</span><span class="svc-emoji">❄️</span><div class="svc-name">Seasonal Maintenance</div><div class="svc-desc">Winterizing, snow load prevention, spring clean-up, deck staining, and year-round property upkeep.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">09</span><span class="svc-emoji">🧱</span><div class="svc-name">Drywall &amp; Plastering</div><div class="svc-desc">Hole repairs, full wall installation, taping, mudding, and smooth finishing for walls and ceilings.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">10</span><span class="svc-emoji">🪵</span><div class="svc-name">Flooring</div><div class="svc-desc">Hardwood, laminate, vinyl plank, tile installation, subfloor repair, and floor refinishing.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">11</span><span class="svc-emoji">🌿</span><div class="svc-name">Outdoor &amp; Landscaping</div><div class="svc-desc">Fence repair, deck building, concrete patching, interlock, shed assembly, and outdoor repairs.</div><span class="svc-arrow">→</span></div>
-    <div class="svc-card"><span class="svc-num">12</span><span class="svc-emoji">🛠️</span><div class="svc-name">General Handyman</div><div class="svc-desc">Furniture assembly, TV mounting, smart home devices, caulking, odd jobs, and anything else you need.</div><span class="svc-arrow">→</span></div>
-  </div>
-</section>
-
-<section id="why">
-  <div class="why-layout">
-    <div class="why-vis reveal">
-      <div class="why-shape"><div class="why-center"><span class="why-icon">🏗️</span><div class="why-txt">Built On Trust</div></div></div>
-      <div class="why-corners"><div class="cb tl">Thunder Bay Since 2014</div><div class="cb br">Fully Insured</div></div>
+  <div class="svc-masthead">
+    <div class="svc-mast-left r">
+      <div class="sec-eyebrow">What We Do</div>
+      <h2 class="sec-h2">Complete Home &amp;<br><span>Maintenance Services</span></h2>
+      <p class="svc-intro">From emergency repairs to planned renovations, VP Contracting handles it all — professional expertise with a commitment to quality on every job.</p>
     </div>
-    <div class="why-feats reveal">
-      <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">Why VP Contracting</span></div>
-      <h2 class="sec-title" style="margin-bottom:48px">Your Home,<br>Our Priority</h2>
-      <div class="feat"><div class="feat-icon">🏅</div><div class="feat-txt"><h3>Licensed, Insured &amp; Trusted</h3><p>Every technician is fully licensed and insured. You get professional work with complete peace of mind — your property is always protected.</p></div></div>
-      <div class="feat"><div class="feat-icon">⚡</div><div class="feat-txt"><h3>Fast Response Times</h3><p>We know repairs can't always wait. Same-day and emergency service is available throughout Thunder Bay and surrounding areas.</p></div></div>
-      <div class="feat"><div class="feat-icon">💰</div><div class="feat-txt"><h3>Transparent, Fair Pricing</h3><p>No hidden fees, no surprises. We provide clear estimates upfront so you always know what you're paying before work begins.</p></div></div>
-      <div class="feat"><div class="feat-icon">✅</div><div class="feat-txt"><h3>Satisfaction Guaranteed</h3><p>We stand behind every job we do. If something isn't right, we'll make it right — that's the VP Contracting promise.</p></div></div>
+    <div class="svc-mast-right">
+      <div class="svc-mast-img"></div>
+      <div class="svc-mast-img-ov"></div>
+      <span class="svc-mast-cap">Professional Workmanship — Thunder Bay</span>
     </div>
   </div>
-</section>
 
-<section id="process">
-  <div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-text">How It Works</span></div>
-  <h2 class="sec-title reveal">Simple Process,<br>Expert Results</h2>
-  <div class="proc-steps reveal">
-    <div class="proc-step"><div class="step-circ"><span class="step-num">01</span></div><div class="step-title">Contact Us</div><div class="step-desc">Call, text, or fill out our form. Tell us what you need and we'll get back to you fast.</div></div>
-    <div class="proc-step"><div class="step-circ"><span class="step-num">02</span></div><div class="step-title">Free Estimate</div><div class="step-desc">We assess the job and provide a transparent, written quote with no obligation.</div></div>
-    <div class="proc-step"><div class="step-circ"><span class="step-num">03</span></div><div class="step-title">We Get To Work</div><div class="step-desc">Our skilled technicians arrive on time, treat your home with respect, and complete the job properly.</div></div>
-    <div class="proc-step"><div class="step-circ"><span class="step-num">04</span></div><div class="step-title">Your Approval</div><div class="step-desc">We walk you through the completed work. You only pay when you're 100% satisfied.</div></div>
+  <div class="svc-grid">
+    <div class="svc r"><span class="svc-num">01</span><div class="svc-name">Plumbing Repairs</div><div class="svc-desc">Leaky faucets, pipe repairs, toilet installation, drain cleaning, and general plumbing maintenance.</div><span class="svc-bar"></span></div>
+    <div class="svc r d1"><span class="svc-num">02</span><div class="svc-name">Electrical Work</div><div class="svc-desc">Outlet installation, light fixtures, ceiling fans, switch replacements, and minor electrical upgrades.</div><span class="svc-bar"></span></div>
+    <div class="svc r d2"><span class="svc-num">03</span><div class="svc-name">Carpentry</div><div class="svc-desc">Custom shelving, door repairs, trim work, deck maintenance, framing, and cabinet installation.</div><span class="svc-bar"></span></div>
+    <div class="svc r"><span class="svc-num">04</span><div class="svc-name">Painting</div><div class="svc-desc">Interior and exterior painting, drywall patching, priming, and professional finishing for any space.</div><span class="svc-bar"></span></div>
+    <div class="svc r d1"><span class="svc-num">05</span><div class="svc-name">Windows &amp; Doors</div><div class="svc-desc">Window installation and sealing, door repair and replacement, weatherstripping, and lock work.</div><span class="svc-bar"></span></div>
+    <div class="svc r d2"><span class="svc-num">06</span><div class="svc-name">Roofing &amp; Eavestroughs</div><div class="svc-desc">Shingle repair, eavestrough cleaning, flashing repair, and minor roof patching.</div><span class="svc-bar"></span></div>
+    <div class="svc r"><span class="svc-num">07</span><div class="svc-name">Bathroom &amp; Kitchen</div><div class="svc-desc">Tile installation, caulking, vanity upgrades, backsplash, fixture replacement, and renovations.</div><span class="svc-bar"></span></div>
+    <div class="svc r d1"><span class="svc-num">08</span><div class="svc-name">Seasonal Maintenance</div><div class="svc-desc">Weatherproofing, winterizing, spring clean-up, deck staining, and year-round property upkeep.</div><span class="svc-bar"></span></div>
+    <div class="svc r d2"><span class="svc-num">09</span><div class="svc-name">Drywall &amp; Plastering</div><div class="svc-desc">Hole repairs, full wall installation, taping, mudding, and smooth finishing for walls and ceilings.</div><span class="svc-bar"></span></div>
+    <div class="svc r"><span class="svc-num">10</span><div class="svc-name">Flooring</div><div class="svc-desc">Hardwood, laminate, vinyl plank, tile installation, subfloor repair, and floor refinishing.</div><span class="svc-bar"></span></div>
+    <div class="svc r d1"><span class="svc-num">11</span><div class="svc-name">General Handyman</div><div class="svc-desc">Furniture assembly, TV mounting, smart home devices, caulking, odd jobs, and anything you need.</div><span class="svc-bar"></span></div>
+    <div class="svc-quote r d2"><p>"Built Right.<br>Every Time."</p></div>
   </div>
 </section>
 
-<section id="testi">
-  <div class="testi-hdr reveal">
-    <div><div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">Client Reviews</span></div><h2 class="sec-title">What Thunder Bay<br>Is Saying</h2></div>
-    <div><div class="stars">★★★★★</div><p style="color:var(--warm-gray);font-size:13px;margin-top:6px;letter-spacing:1px">5.0 AVERAGE RATING</p></div>
+<!-- ── IMAGE STRIP ──────────────────────────────── -->
+<div class="img-strip">
+  <div class="strip-img" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80&fit=crop')">
+    <div class="strip-ov"></div><span class="strip-cap">Kitchen Renovation</span>
   </div>
-  <div class="testi-grid reveal">
-    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-txt">"VP Contracting fixed a plumbing nightmare in my basement within hours of calling. Professional, clean, and priced fairly. I won't call anyone else."</p><div class="testi-auth"><div class="auth-av">MK</div><div class="auth-info"><div class="name">Mark K.</div><div class="loc">Current River, Thunder Bay</div></div></div></div>
-    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-txt">"Hired them to repaint our living room and patch drywall. The crew was on time, tidy, and did incredible work. Our home looks brand new. Highly recommend!"</p><div class="testi-auth"><div class="auth-av">SL</div><div class="auth-info"><div class="name">Sandra L.</div><div class="loc">Westfort, Thunder Bay</div></div></div></div>
-    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-txt">"Built us a beautiful deck and repaired our fence. Quality craftsmanship, great communication throughout. These guys are the real deal — Thunder Bay's best!"</p><div class="testi-auth"><div class="auth-av">TR</div><div class="auth-info"><div class="name">Tom R.</div><div class="loc">Intercity, Thunder Bay</div></div></div></div>
+  <div class="strip-img" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80&fit=crop')">
+    <div class="strip-ov"></div><span class="strip-cap">Skilled Craftsmen</span>
   </div>
-</section>
-
-<div class="cta-band">
-  <div class="cta-inner">
-    <div class="cta-txt"><h2>Ready to Get<br>Started?</h2><p>Contact VP Contracting today for a free, no-obligation estimate.</p></div>
-    <div class="cta-acts"><a href="#contact" class="btn-dark">Request Free Quote</a><div class="cta-phone">📞 (807) 555-0198</div></div>
+  <div class="strip-img" style="background-image:url('https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=700&q=80&fit=crop')">
+    <div class="strip-ov"></div><span class="strip-cap">Quality Finishes</span>
   </div>
 </div>
 
+<!-- ── WHY VP ────────────────────────────────────── -->
+<section id="why">
+  <div class="why-split">
+    <div class="why-img-side">
+      <div class="why-img"></div>
+      <div class="why-img-ov"></div>
+      <div class="why-quote-badge r">
+        <p>"Reliable, honest work from a team that actually shows up when they say they will."</p>
+        <span>— Thunder Bay Homeowner</span>
+      </div>
+    </div>
+    <div class="why-content">
+      <div class="sec-eyebrow r">Why VP Contracting</div>
+      <h2 class="sec-h2 r d1">Your Home,<br><span>Our Priority</span></h2>
+      <div class="feat r d2"><span class="feat-idx">01</span><div><h3>Licensed, Insured &amp; Trusted</h3><p>Every technician is fully licensed and insured. Professional work with complete peace of mind — your property is always protected.</p></div></div>
+      <div class="feat r d2"><span class="feat-idx">02</span><div><h3>Fast Response Times</h3><p>Same-day and emergency service available throughout Thunder Bay. We know repairs can't always wait.</p></div></div>
+      <div class="feat r d2"><span class="feat-idx">03</span><div><h3>Transparent, Fair Pricing</h3><p>Clear estimates upfront, no hidden fees. You always know what you're paying before any work begins.</p></div></div>
+      <div class="feat r d2"><span class="feat-idx">04</span><div><h3>Satisfaction Guaranteed</h3><p>We stand behind every job. If something isn't right, we'll make it right — that's the VP Contracting promise.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OUR WORK ──────────────────────────────────── -->
+<section id="showcase">
+  <div class="showcase-head">
+    <div class="showcase-head-left r">
+      <div class="sec-eyebrow">Our Work</div>
+      <h2 class="sec-h2">Results That<br><span>Speak for Themselves</span></h2>
+    </div>
+    <div class="showcase-head-right r d1">
+      <p>Every project reflects our commitment to quality. From small repairs to full renovations, we bring the same standard of care to every Thunder Bay home.</p>
+    </div>
+  </div>
+  <div class="showcase-grid">
+    <div class="proj r">
+      <div class="proj-img" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=85&fit=crop')"></div>
+      <div class="proj-ov"></div>
+      <div class="proj-info"><span class="proj-tag">Kitchen Renovation</span><div class="proj-title">Custom tile, fixtures &amp; cabinetry</div></div>
+    </div>
+    <div class="proj r d1">
+      <div class="proj-img" style="background-image:url('https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=900&q=85&fit=crop')"></div>
+      <div class="proj-ov"></div>
+      <div class="proj-info"><span class="proj-tag">Flooring</span><div class="proj-title">Hardwood throughout a complete home</div></div>
+    </div>
+    <div class="proj wide r d1">
+      <div class="proj-img" style="background-image:url('https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1400&q=85&fit=crop&crop=center')"></div>
+      <div class="proj-ov"></div>
+      <div class="proj-info"><span class="proj-tag">Bathroom Renovation</span><div class="proj-title">Spa-inspired transformation — tile, vanity &amp; fixtures</div></div>
+    </div>
+    <div class="proj r">
+      <div class="proj-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&fit=crop')"></div>
+      <div class="proj-ov"></div>
+      <div class="proj-info"><span class="proj-tag">Carpentry</span><div class="proj-title">Custom built-in shelving &amp; trim work</div></div>
+    </div>
+    <div class="proj r d1">
+      <div class="proj-img" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85&fit=crop')"></div>
+      <div class="proj-ov"></div>
+      <div class="proj-info"><span class="proj-tag">Painting &amp; Drywall</span><div class="proj-title">Interior repaint with smooth drywall finishing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ───────────────────────────────────── -->
+<section id="process">
+  <div class="proc-head r">
+    <div class="sec-eyebrow">How It Works</div>
+    <h2 class="sec-h2">Simple Process, <span>Expert Results</span></h2>
+  </div>
+  <div class="proc-steps">
+    <div class="proc-step r"><div class="proc-big">01</div><span class="proc-bar"></span><div class="proc-title">Contact Us</div><div class="proc-desc">Call, text, or fill out our form. Tell us what you need and we'll respond promptly.</div></div>
+    <div class="proc-step r d1"><div class="proc-big">02</div><span class="proc-bar"></span><div class="proc-title">Free Estimate</div><div class="proc-desc">We assess the job and provide a transparent written quote — no obligation required.</div></div>
+    <div class="proc-step r d2"><div class="proc-big">03</div><span class="proc-bar"></span><div class="proc-title">We Get To Work</div><div class="proc-desc">Our skilled team arrives on time, respects your space, and completes the job properly.</div></div>
+    <div class="proc-step r d3"><div class="proc-big">04</div><span class="proc-bar"></span><div class="proc-title">Your Approval</div><div class="proc-desc">We walk you through everything. You only pay when you're 100% satisfied.</div></div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ──────────────────────────────── -->
+<section id="testimonials">
+  <div class="testi-masthead">
+    <div class="testi-mast-left r">
+      <div class="sec-eyebrow">Client Reviews</div>
+      <h2 class="sec-h2">What Thunder Bay<br><span>Is Saying</span></h2>
+    </div>
+    <div class="testi-mast-right"><div class="testi-mast-img"></div><div class="testi-mast-ov"></div></div>
+  </div>
+  <div class="rating-strip r">
+    <div style="display:flex;align-items:center;gap:16px">
+      <span class="rating-big">5.0</span>
+      <div>
+        <div class="rating-stars">
+          <svg class="rstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg class="rstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg class="rstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg class="rstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg class="rstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+        </div>
+        <div class="rating-label" style="margin-top:4px">Average Rating</div>
+      </div>
+    </div>
+    <span class="rating-label">Thunder Bay's Most Trusted Handyman Service</span>
+    <div style="display:flex;align-items:center;gap:8px"><span class="pulse-dot"></span><span class="rating-label">Accepting New Clients</span></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card r">
+      <div class="testi-stars"><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg></div>
+      <div class="testi-q">"</div>
+      <p class="testi-text">VP Contracting fixed a plumbing nightmare in my basement within hours of calling. Professional, clean, and priced fairly. I won't call anyone else.</p>
+      <div class="testi-name">Mark K.</div><div class="testi-loc">Current River, Thunder Bay</div>
+    </div>
+    <div class="testi-card r d1">
+      <div class="testi-stars"><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg></div>
+      <div class="testi-q">"</div>
+      <p class="testi-text">Hired them to repaint our living room and patch drywall. The crew was on time, tidy, and the work was incredible. Our home looks brand new.</p>
+      <div class="testi-name">Sandra L.</div><div class="testi-loc">Westfort, Thunder Bay</div>
+    </div>
+    <div class="testi-card r d2">
+      <div class="testi-stars"><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg><svg class="tstar" viewBox="0 0 16 16"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg></div>
+      <div class="testi-q">"</div>
+      <p class="testi-text">Built us a beautiful deck and repaired our fence. Quality craftsmanship, great communication throughout. These guys are Thunder Bay's best.</p>
+      <div class="testi-name">Tom R.</div><div class="testi-loc">Intercity, Thunder Bay</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ──────────────────────────────────────── -->
+<div class="cta-band">
+  <div class="cta-left">
+    <div class="sec-eyebrow r" style="color:var(--sky)">Ready to Start?</div>
+    <h2 class="cta-h r d1">Let's Get Your<br>Project <span>Done.</span></h2>
+  </div>
+  <div class="cta-right r d2">
+    <div>
+      <div class="cta-phone">(807) 357-2180</div>
+      <div class="cta-phone-lbl">Call or text anytime</div>
+    </div>
+    <a href="#contact" class="btn-white">Request Free Quote</a>
+  </div>
+</div>
+
+<!-- ── CONTACT ───────────────────────────────────── -->
 <section id="contact">
-  <div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-text">Get In Touch</span></div>
-  <h2 class="sec-title reveal">Let's Talk About<br>Your Project</h2>
-  <div class="contact-layout">
-    <div class="contact-info reveal">
-      <div class="contact-item"><div class="ci-icon">📞</div><div><h4>Phone / Text</h4><a href="tel:8075550198">(807) 555-0198</a></div></div>
-      <div class="contact-item"><div class="ci-icon">📧</div><div><h4>Email</h4><a href="mailto:info@vpcontracting.ca">info@vpcontracting.ca</a></div></div>
-      <div class="contact-item"><div class="ci-icon">📍</div><div><h4>Based In</h4><p>Thunder Bay, Ontario<br>Serving the entire region</p></div></div>
-      <div class="contact-item"><div class="ci-icon">🕐</div><div><h4>Hours</h4><p>Mon–Fri: 7:00 AM – 7:00 PM<br>Sat: 8:00 AM – 5:00 PM<br>Emergency service available</p></div></div>
-      <div class="svc-areas">
-        <div class="areas-label">Service Areas</div>
-        <div class="areas-list">
-          <span class="area-tag">Thunder Bay</span><span class="area-tag">Current River</span><span class="area-tag">Westfort</span><span class="area-tag">Intercity</span><span class="area-tag">Port Arthur</span><span class="area-tag">Fort William</span><span class="area-tag">Neebing</span><span class="area-tag">Oliver Paipoonge</span><span class="area-tag">Shuniah</span><span class="area-tag">Murillo</span>
+  <div class="contact-split">
+    <div class="contact-left">
+      <div>
+        <div class="sec-eyebrow r">Get In Touch</div>
+        <h2 class="sec-h2 r d1">Let's Talk<br><span>Your Project</span></h2>
+      </div>
+      <div class="r d2"><span class="ci-lbl">Phone / Text</span><a href="tel:8073572180" class="ci-val">(807) 357-2180</a></div>
+      <div class="r d2"><span class="ci-lbl">Email</span><a href="mailto:vishmaypatel2910@gmail.com" class="ci-val" style="font-size:14px;letter-spacing:0">vishmaypatel2910@gmail.com</a></div>
+      <div class="r d2"><span class="ci-lbl">Based In</span><span class="ci-val-sm">Thunder Bay, Ontario<br>Serving the entire region</span></div>
+      <div class="r d2"><span class="ci-lbl">Hours</span><span class="ci-val-sm">Mon–Fri &nbsp;7:00 am – 7:00 pm<br>Saturday &nbsp;8:00 am – 5:00 pm<br>Emergency service available</span></div>
+      <div class="areas-wrap r d3">
+        <div class="areas-lbl">Service Areas</div>
+        <div class="areas-tags">
+          <span class="area-t">Thunder Bay</span><span class="area-t">Current River</span><span class="area-t">Westfort</span><span class="area-t">Intercity</span><span class="area-t">Port Arthur</span><span class="area-t">Fort William</span><span class="area-t">Neebing</span><span class="area-t">Oliver Paipoonge</span><span class="area-t">Shuniah</span><span class="area-t">Murillo</span>
         </div>
       </div>
     </div>
-    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
-        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Phone</label><input type="tel" placeholder="(807) 000-0000"></div>
-        <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com"></div>
-      </div>
-      <div class="form-group">
-        <label>Service Needed</label>
-        <select><option value="" disabled selected>Select a service...</option><option>Plumbing Repairs</option><option>Electrical Work</option><option>Carpentry</option><option>Painting</option><option>Windows &amp; Doors</option><option>Roofing &amp; Eavestroughs</option><option>Bathroom &amp; Kitchen</option><option>Seasonal Maintenance</option><option>Drywall &amp; Plastering</option><option>Flooring</option><option>Outdoor &amp; Landscaping</option><option>General Handyman</option><option>Other / Multiple Services</option></select>
-      </div>
-      <div class="form-group"><label>Describe Your Project</label><textarea placeholder="Tell us about your project, the issue you're experiencing, or any details that will help us provide an accurate estimate..."></textarea></div>
-      <button type="submit" class="form-submit">Send My Request →</button>
-    </form>
+    <div class="contact-right">
+      <form class="cform r d1" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="frow">
+          <div class="ff"><label>First Name</label><input type="text" name="firstName" placeholder="John" required><span class="ff-bar"></span></div>
+          <div class="ff"><label>Last Name</label><input type="text" name="lastName" placeholder="Smith" required><span class="ff-bar"></span></div>
+        </div>
+        <div class="frow">
+          <div class="ff"><label>Phone</label><input type="tel" name="phone" placeholder="(807) 000-0000"><span class="ff-bar"></span></div>
+          <div class="ff"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required><span class="ff-bar"></span></div>
+        </div>
+        <div class="ff full">
+          <label>Service Needed</label>
+          <select name="service">
+            <option value="" disabled selected>Select a service</option>
+            <option>Plumbing Repairs</option><option>Electrical Work</option><option>Carpentry</option><option>Painting</option><option>Windows &amp; Doors</option><option>Roofing &amp; Eavestroughs</option><option>Bathroom &amp; Kitchen</option><option>Seasonal Maintenance</option><option>Drywall &amp; Plastering</option><option>Flooring</option><option>General Handyman</option><option>Other / Multiple Services</option>
+          </select>
+          <span class="ff-bar"></span>
+        </div>
+        <div class="ff full">
+          <label>Describe Your Project</label>
+          <textarea name="message" placeholder="Tell us about your project or the issue you're experiencing…"></textarea>
+          <span class="ff-bar"></span>
+        </div>
+        <div class="form-foot">
+          <p>We'll respond within one business day. All estimates are free and without obligation.</p>
+          <button type="submit" class="btn-submit">Send Request</button>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
+<!-- ── FOOTER ────────────────────────────────────── -->
 <footer>
-  <div class="footer-top">
+  <div class="footer-inner">
     <div class="footer-brand">
-      <div class="nav-logo"><div class="logo-badge"><span>VP</span></div><div class="logo-text"><span class="company">VP Contracting</span><span class="tagline">Thunder Bay, Ontario</span></div></div>
-      <p>Thunder Bay's trusted handyman and maintenance experts. Proudly serving our community with reliable, professional service since 2014.</p>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <svg width="32" height="32" viewBox="0 0 52 52" fill="none">
+          <rect width="52" height="52" rx="6" fill="#1a3560"/>
+          <polygon points="10,38 26,14 42,38" fill="none" stroke="#7eb5e8" stroke-width="3" stroke-linejoin="round"/>
+          <polygon points="18,38 26,24 34,38" fill="#7eb5e8"/>
+          <line x1="10" y1="38" x2="42" y2="38" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="footer-mark">VP CONTRACTING</span>
+      </div>
+      <p>Thunder Bay's trusted handyman and maintenance experts. Proudly serving our community with professional service since 2017.</p>
     </div>
-    <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">Plumbing</a></li><li><a href="#services">Electrical</a></li><li><a href="#services">Carpentry</a></li><li><a href="#services">Painting</a></li><li><a href="#services">Flooring</a></li><li><a href="#services">Roofing</a></li></ul></div>
-    <div class="footer-col"><h4>Company</h4><ul><li><a href="#why">About VP</a></li><li><a href="#process">Our Process</a></li><li><a href="#testi">Reviews</a></li><li><a href="#contact">Contact</a></li><li><a href="#contact">Get a Quote</a></li></ul></div>
-    <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:8075550198">(807) 555-0198</a></li><li><a href="mailto:info@vpcontracting.ca">info@vpcontracting.ca</a></li><li><a href="#contact">Thunder Bay, ON</a></li></ul></div>
+    <div class="fcol"><h4>Services</h4><ul><li><a href="#services">Plumbing</a></li><li><a href="#services">Electrical</a></li><li><a href="#services">Carpentry</a></li><li><a href="#services">Painting</a></li><li><a href="#services">Flooring</a></li><li><a href="#services">Roofing</a></li></ul></div>
+    <div class="fcol"><h4>Company</h4><ul><li><a href="#why">About</a></li><li><a href="#showcase">Our Work</a></li><li><a href="#process">Our Process</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="fcol"><h4>Contact</h4><ul><li><a href="tel:8073572180">(807) 357-2180</a></li><li><a href="mailto:vishmaypatel2910@gmail.com">vishmaypatel2910@gmail.com</a></li><li><a href="#contact">Thunder Bay, ON</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <p>© 2024 <strong>VP Contracting</strong>. All rights reserved. Thunder Bay, Ontario.</p>
-    <div class="foot-badge"><div class="dot"></div>Accepting New Clients</div>
+    <p>&copy; 2024 VP Contracting. All rights reserved. Thunder Bay, Ontario.</p>
+    <div class="foot-badge"><span class="pulse-dot"></span>&nbsp;Accepting New Clients</div>
   </div>
 </footer>
 
 <script>
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});
-  },{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  const nav=document.querySelector('nav');
-  window.addEventListener('scroll',()=>{nav.style.background=window.scrollY>60?'rgba(10,22,40,.98)':'rgba(10,22,40,.92)';});
-  function handleSubmit(e){e.preventDefault();const btn=e.target.querySelector('.form-submit');btn.textContent='✓ Request Sent!';btn.style.background='#4ecb8d';btn.style.color='#0a1628';setTimeout(()=>{btn.textContent='Send My Request →';btn.style.background='';btn.style.color='';e.target.reset();},3000);}
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)} });
+},{threshold:0.07});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+async function handleSubmit(e){
+  e.preventDefault();
+  const form=e.target,btn=form.querySelector('.btn-submit');
+  const d=new FormData(form);
+  const fn=d.get('firstName')||'',ln=d.get('lastName')||'',ph=d.get('phone')||'',em=d.get('email')||'',sv=d.get('service')||'',msg=d.get('message')||'';
+  btn.textContent='Sending…';btn.disabled=true;
+  try{
+    const res=await fetch('https://formspree.io/f/YOUR_FORM_ID',{
+      method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},
+      body:JSON.stringify({name:`${fn} ${ln}`,email:em,phone:ph,service:sv,message:msg,_replyto:em,_subject:`New Quote — VP Contracting: ${sv}`})
+    });
+    if(res.ok){btn.textContent='Sent ✓';btn.style.background='#2d6db4';form.reset()}
+    else{fallback(fn,ln,ph,em,sv,msg)}
+  }catch{fallback(fn,ln,ph,em,sv,msg)}
+  setTimeout(()=>{btn.textContent='Send Request';btn.style.background='';btn.disabled=false},3500);
+}
+function fallback(fn,ln,ph,em,sv,msg){
+  const to='vishmaypatel2910@gmail.com',sub=encodeURIComponent(`New Quote — VP Contracting: ${sv}`);
+  const bod=encodeURIComponent(`Name: ${fn} ${ln}\nPhone: ${ph}\nEmail: ${em}\nService: ${sv}\n\nMessage:\n${msg}`);
+  window.location.href=`mailto:${to}?subject=${sub}&body=${bod}`;
+}
 </script>
 </body>
 </html>
